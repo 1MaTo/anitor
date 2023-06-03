@@ -11,8 +11,11 @@ export default mergeConfig(
       exclude: [...configDefaults.exclude, 'e2e/*'],
       root: fileURLToPath(new URL('./', import.meta.url)),
       transformMode: {
-        web: [/\.[jt]sx$/],
+        web: [/\.[jt]sx$/]
       },
+      silent: false,
+      deps: { inline: ['vuetify'] },
+      setupFiles: ['./src/components/__tests__/unit/setup.ts']
     }
   })
 )

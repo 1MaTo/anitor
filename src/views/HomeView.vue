@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import Test from '@/components/Test.vue';
-import { nextTick, ref } from 'vue';
-
-
+import ThemeToggle from '@/components/ThemeToggle.vue'
 </script>
 
 <template>
   <main>
-    <Test>div</Test>
+    <theme-toggle />
+    <v-btn class="bg-orange-darken-1">{{ $t('test') }}</v-btn>
   </main>
 </template>
