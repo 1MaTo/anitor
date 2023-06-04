@@ -8,7 +8,7 @@ config.global.plugins = [vuetify]
 
 const buttonSelector = '[data-testid=change-theme]'
 const lightIconSelector = '.fa-solid.fa-sun'
-const darkIconSelector = '.fa-solid.fa-moon'
+const darkIconSelector = '.mdi-weather-night'
 
 const themeChangeEmitter = 'theme-change'
 
