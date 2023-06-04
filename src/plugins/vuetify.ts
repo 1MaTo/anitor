@@ -1,8 +1,10 @@
-import '@fortawesome/fontawesome-free/css/all.css'
-import { createVueI18nAdapter } from 'vuetify/locale/adapters/vue-i18n'
 import 'vuetify/styles'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@mdi/font/css/materialdesignicons.css'
+import { createVueI18nAdapter } from 'vuetify/locale/adapters/vue-i18n'
 import { createVuetify } from 'vuetify'
 import { aliases, fa } from 'vuetify/iconsets/fa'
+import { mdi } from 'vuetify/iconsets/mdi'
 import { getDefaultTheme } from '@/utils/theme'
 import i18n from '@/plugins/i18n'
 import { useI18n } from 'vue-i18n'
@@ -18,7 +20,8 @@ const vuetify = createVuetify({
     defaultSet: 'fa',
     aliases,
     sets: {
-      fa
+      fa,
+      mdi
     }
   }
 })
