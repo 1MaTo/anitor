@@ -17,7 +17,7 @@ describe('ToggleThemeButton', () => {
     expect(ToggleThemeButton).toBeTruthy()
 
     const wrapper = mount(ToggleThemeButton, {
-      props: { theme: 'light' } as any
+      props: { theme: ThemeType.light } as any
     })
     expect(wrapper.find(lightIconSelector).exists()).toBeTruthy()
     await wrapper.setProps({ theme: ThemeType.dark })
@@ -28,11 +28,11 @@ describe('ToggleThemeButton', () => {
     expect(ToggleThemeButton).toBeTruthy()
 
     const wrapper = mount(ToggleThemeButton, {
-      props: { theme: 'light' } as any
+      props: { theme: ThemeType.light } as any
     })
 
     await wrapper.find(buttonSelector).trigger('click')
     expect(wrapper.emitted()[themeChangeEmitter].length).toBe(1)
-    expect((wrapper.emitted()[themeChangeEmitter][0] as any)[0]).toBe('dark')
+    expect((wrapper.emitted()[themeChangeEmitter][0] as any)[0]).toBe(ThemeType.dark)
   })
 })
