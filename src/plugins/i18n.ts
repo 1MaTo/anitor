@@ -4,7 +4,7 @@ import ru from '@/locales/ru.json'
 import { AppLocale } from '@/types/locale'
 import { getDefaultLocale } from '@/utils/locale'
 
-type MessageSchema = typeof en
+export type MessageSchema = typeof en
 
 const i18n = createI18n<[MessageSchema], AppLocale>({
   legacy: false,
