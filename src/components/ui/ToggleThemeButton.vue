@@ -11,9 +11,9 @@ const handleOnClick = () => {
 </script>
 
 <template>
-  <v-btn data-testid="change-theme" icon="true" @click="handleOnClick">
+  <v-btn size="small" data-testid="change-theme" icon="true" @click="handleOnClick">
     <v-scale-transition>
-      <v-icon v-if="theme === 'dark'"> fa-solid fa-moon </v-icon>
+      <v-icon v-if="theme === 'dark'"> mdi:mdi-weather-night </v-icon>
       <v-icon v-if="theme === 'light'"> fa-solid fa-sun </v-icon>
     </v-scale-transition>
   </v-btn>
