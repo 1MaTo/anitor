@@ -11,6 +11,6 @@ import logoImage from '@/assets/bd_logo.png'
 
 <style scoped>
 .container {
-    cursor: default;
+  cursor: default;
 }
 </style>
