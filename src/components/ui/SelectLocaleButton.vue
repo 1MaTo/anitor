@@ -15,7 +15,7 @@ const handleOnClick = (newLocale: AppLocale) => {
 <template>
   <v-menu>
     <template #activator="{ props }">
-      <v-btn data-testid="open-menu" size="small" v-bind="props" icon="mdi:mdi-translate"></v-btn>
+      <v-btn data-testid="open-menu" v-bind="props" icon="mdi:mdi-translate"></v-btn>
     </template>
     <v-list density="compact" nav>
       <v-list-item
