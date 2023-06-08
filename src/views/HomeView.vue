@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {} from '@/mocks/nyaa-rss'
+import axios from 'axios'
 
 const handleFetchNyaaRss = async () => {
-  const response = await fetch('https://nyaa.si/?page=rss')
-  const text = await response.text()
+  const response = await axios('https://nyaa.ink/', { withCredentials: true })
+  const text = response.data
   console.log(text)
   console.log(new window.DOMParser().parseFromString(text, 'text/xml'))
 }
