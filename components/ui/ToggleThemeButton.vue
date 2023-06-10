@@ -1,18 +1,15 @@
 <script setup lang="ts">
-  import { ThemeType } from "@/types/theme";
-  const props = defineProps<{
-    theme: ThemeType;
-  }>();
-  const emit = defineEmits<{
-    (e: "theme-change", newTheme: ThemeType): void;
-  }>();
+import { ThemeType } from '@/types/theme'
+const props = defineProps<{
+  theme: ThemeType
+}>()
+const emit = defineEmits<{
+  (e: 'theme-change', newTheme: ThemeType): void
+}>()
 
-  const handleOnClick = () => {
-    emit(
-      "theme-change",
-      props.theme === ThemeType.dark ? ThemeType.light : ThemeType.dark
-    );
-  };
+const handleOnClick = () => {
+  emit('theme-change', props.theme === ThemeType.dark ? ThemeType.light : ThemeType.dark)
+}
 </script>
 
 <template>

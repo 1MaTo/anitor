@@ -1,5 +1,5 @@
-import { AppLocale } from '@/types/locale'
 import { LocalStorageKey } from './localStorage'
+import { AppLocale } from '@/types/locale'
 
 export const getBrowserLocale = () => {
   const locale =

@@ -1,5 +1,5 @@
-import { ThemeType } from '@/types/theme'
 import { LocalStorageKey } from './localStorage'
+import { ThemeType } from '@/types/theme'
 
 export const getDefaultTheme = () => {
   const userTheme = localStorage.getItem(LocalStorageKey.theme)

@@ -1,13 +1,13 @@
-import en from "@/locales/en.json";
+import en from '@/locales/en.json'
 
-export type MessageSchema = typeof en;
+export type MessageSchema = typeof en
 
 export enum AppLocale {
-  en = "en",
-  ru = "ru",
+  en = 'en',
+  ru = 'ru'
 }
 
 export enum LanguageName {
-  en = "English",
-  ru = "Русский",
+  en = 'English',
+  ru = 'Русский'
 }

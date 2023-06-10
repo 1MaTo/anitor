@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LocaleSelector from '@/components/LocaleSelector.vue'
 import ThemeToggle from './ThemeToggle.vue'
+import LocaleSelector from '@/components/LocaleSelector.vue'
 </script>
 
 <template>
