@@ -1,21 +1,27 @@
 <script setup lang="ts">
-import { AppLocale, LanguageName } from '@/types/locale'
+  import { AppLocale, LanguageName } from "@/types/locale";
 
-const props = defineProps<{
-  locale: AppLocale
-}>()
-const emit = defineEmits<{ (e: 'locale-change', newLocale: AppLocale): void }>()
+  const props = defineProps<{
+    locale: AppLocale | string;
+  }>();
+  const emit = defineEmits<{
+    (e: "locale-change", newLocale: AppLocale): void;
+  }>();
 
-const handleOnClick = (newLocale: AppLocale) => {
-  if (props.locale === newLocale) return
-  emit('locale-change', newLocale)
-}
+  const handleOnClick = (newLocale: AppLocale) => {
+    if (props.locale === newLocale) return;
+    emit("locale-change", newLocale);
+  };
 </script>
 
 <template>
   <v-menu>
     <template #activator="{ props }">
-      <v-btn data-testid="open-menu" v-bind="props" icon="mdi:mdi-translate"></v-btn>
+      <v-btn
+        data-testid="open-menu"
+        v-bind="props"
+        icon="mdi:mdi-translate"
+      ></v-btn>
     </template>
     <v-list density="compact" nav>
       <v-list-item
