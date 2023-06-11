@@ -3,7 +3,7 @@ import { VNodeRef } from 'nuxt/dist/app/compat/capi'
 
 const props = defineProps({
   modelValue: { type: String, default: '' },
-  placeholer: { type: String, default: 'Search' },
+  placeholder: { type: String, default: 'Search' },
   disabled: Boolean,
   loading: Boolean,
   rounded: Boolean,
@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
                   type="text"
                   :disabled="props.disabled"
                   :value="modelValue"
-                  :placeholder="props.placeholer"
+                  :placeholder="props.placeholder"
                   @focusin="focused = true"
                   @focusout="focused = false"
                   @keydown.enter="$emit('submit')"
