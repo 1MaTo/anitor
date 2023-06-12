@@ -18,17 +18,19 @@ const statusProps = computed(() => {
       return { color: '', icon: '', textColor: 'text-blue-accent-1' }
   }
 })
+
+const publicDate = computed(() => new Date(props.data.date).toLocaleString())
 </script>
 
 <template>
-  <v-list-item class="container py-4">
+  <v-list-item class="container py-4" href="" :ripple="false" border>
     <v-list-item-title :title="data.name" class="title" :class="statusProps.textColor">
       {{ data.name }}
     </v-list-item-title>
 
     <div class="meta-container">
       <v-chip size="small" class="meta-item default" label prepend-icon="fa-regular fa-calendar">
-        {{ new Date(data.date).toLocaleString() }}
+        {{ publicDate }}
       </v-chip>
 
       <v-chip
@@ -55,14 +57,9 @@ const statusProps = computed(() => {
         {{ $t(`nyaa.torrent-status.${data.status}`) }}
       </v-chip>
     </div>
-    <!-- <template v-slot:prepend>
-      <v-avatar size="small" color="primary">
-        <v-icon size="small" color="white">mdi:mdi-clipboard-text</v-icon>
-      </v-avatar>
-    </template> -->
 
     <template v-slot:append>
-      <v-btn color="grey-lighten-1" icon="mdi:mdi-information-outline" variant="text"></v-btn>
+      <v-btn color="grey-lighten-1" icon="mdi:mdi-information" variant="text"></v-btn>
     </template>
   </v-list-item>
 </template>
@@ -73,8 +70,6 @@ const statusProps = computed(() => {
 }
 
 .title {
-  display: inline-flex;
-  align-items: center;
   font-weight: 600;
 }
 

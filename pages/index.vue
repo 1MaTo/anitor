@@ -8,6 +8,7 @@ import SearchField from '~/components/ui/SearchField.vue'
       <v-row>
         <v-col>
           <torrent-list />
+
           <!--  <search-field
             v-model="inputValue"
             :placeholder="$t('search-torrents')"

@@ -2,7 +2,7 @@
 import TorrentListItem from './ui/TorrentListItem.vue'
 import { si } from 'nyaapi'
 
-const data = [
+const data = ref([
   {
     id: '1681717',
     name: '[eXplosion!-raws] Kunoichi Tsubaki no Mune no Uchi [BDRip 1080p]',
@@ -1203,7 +1203,7 @@ const data = [
     completed: '1310',
     status: 'default'
   }
-] as si.Torrent[]
+] as si.Torrent[])
 </script>
 
 <template>
