@@ -7,6 +7,7 @@ declare global {
   const APP_DESCRIPTION: typeof import('../utils/app')['APP_DESCRIPTION']
   const APP_NAME: typeof import('../utils/app')['APP_NAME']
   const AppLocale: typeof import('../types/locale')['AppLocale']
+  const CookieKey: typeof import('../utils/cookie')['CookieKey']
   const EffectScope: typeof import('vue')['EffectScope']
   const LanguageName: typeof import('../types/locale')['LanguageName']
   const LocalStorageKey: typeof import('../utils/localStorage')['LocalStorageKey']
@@ -20,6 +21,7 @@ declare global {
   const defineNuxtPlugin: typeof import('../../../node_modules/nuxt/dist/app')['defineNuxtPlugin']
   const effectScope: typeof import('vue')['effectScope']
   const getBrowserLocale: typeof import('../utils/locale')['getBrowserLocale']
+  const getCookieExpiredDate: typeof import('../utils/cookie')['getCookieExpiredDate']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getDefaultLocale: typeof import('../utils/locale')['getDefaultLocale']
@@ -48,6 +50,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const preferencesCookieOptions: typeof import('../utils/cookie')['preferencesCookieOptions']
   const provide: typeof import('vue')['provide']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
@@ -77,5 +80,13 @@ declare global {
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { Component, ComponentPublicInstance, ComputedRef, InjectionKey, PropType, Ref, VNode } from 'vue'
+  export type {
+    Component,
+    ComponentPublicInstance,
+    ComputedRef,
+    InjectionKey,
+    PropType,
+    Ref,
+    VNode
+  } from 'vue'
 }
