@@ -10,16 +10,14 @@ const loading = ref(false)
     <v-container>
       <v-row>
         <v-col>
-          <client-only>
-            <search-field
-              v-model="inputValue"
-              :placeholder="$t('search-torrents')"
-              :loading="loading"
-              highlight-on-focus
-              size="big"
-              @submit="console.log('submit')"
-            />
-          </client-only>
+          <search-field
+            v-model="inputValue"
+            :placeholder="$t('search-torrents')"
+            :loading="loading"
+            highlight-on-focus
+            size="big"
+            @submit="console.log('submit')"
+          />
         </v-col>
       </v-row>
     </v-container>
