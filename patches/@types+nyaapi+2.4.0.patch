@@ -1,0 +1,12 @@
+diff --git a/node_modules/@types/nyaapi/index.d.ts b/node_modules/@types/nyaapi/index.d.ts
+index 34c42ab..dfbd70d 100644
+--- a/node_modules/@types/nyaapi/index.d.ts
++++ b/node_modules/@types/nyaapi/index.d.ts
+@@ -65,6 +65,7 @@ export namespace si {
+         completed: string;
+         seeders: string;
+         leechers: string;
++        status: string;
+     }
+ 
+     interface UploadOptions {

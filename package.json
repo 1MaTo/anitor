@@ -11,10 +11,11 @@
     "format:check": "prettier --check .",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "patch-package && nuxt prepare "
   },
   "dependencies": {
     "nyaapi": "^2.4.4",
+    "patch-package": "^7.0.0",
     "vue-i18n": "^9.2.2",
     "vuetify": "^3.3.3"
   },
