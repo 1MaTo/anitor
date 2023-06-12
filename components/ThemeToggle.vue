@@ -3,15 +3,15 @@ import { computed } from 'vue'
 import { useTheme } from 'vuetify'
 import ToggleThemeButtonVue from './ui/ToggleThemeButton.vue'
 import { ThemeType } from '@/types/theme'
-import { setDefaultTheme } from '@/utils/theme'
 
+const themeCookie = useCookie(CookieKey.theme, preferencesCookieOptions)
 const theme = useTheme()
 const currentTheme = computed(() =>
   theme.global.name.value === 'dark' ? ThemeType.dark : ThemeType.light
 )
 
 const handleOnThemeChange = (newTheme: ThemeType) => {
-  setDefaultTheme(newTheme)
+  themeCookie.value = newTheme
   theme.global.name.value = newTheme
 }
 </script>
