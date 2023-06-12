@@ -6,7 +6,7 @@ import { ThemeType } from '~/types/theme'
 export const vuetify = createVuetify({
   ssr: true,
   theme: {
-    defaultTheme: process.server ? ThemeType.dark : getDefaultTheme(),
+    defaultTheme: ThemeType.dark,
     themes: {
       [ThemeType.light]: {
         colors: { secondary: '#0085ff' }

@@ -6,7 +6,7 @@ import ru from '@/locales/ru.json'
 
 export const i18n = createI18n<[MessageSchema], AppLocale>({
   legacy: false,
-  locale: process.server ? 'en' : getDefaultLocale(),
+  locale: AppLocale.en,
   fallbackLocale: AppLocale.en,
   messages: {
     en,
