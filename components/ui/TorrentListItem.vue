@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { si } from 'nyaapi';
-import { TorrentStatus } from '~/types/nyaa';
-import SeedersTag from './SeedersTag.vue';
+import { si } from 'nyaapi'
+import SeedersTag from './SeedersTag.vue'
+import { TorrentStatus } from '~/types/nyaa'
 const props = defineProps<{ data: si.Torrent }>()
 
 const statusProps = computed(() => {
@@ -42,11 +42,11 @@ const publicDate = computed(() => new Date(props.data.date))
       </v-chip>
     </div>
 
-    <NuxtLink external target="_blank" rel="noopener" :to="getNyaaTorrentLink(data.id)">
-      <v-list-item-title :title="data.name" class="title" :class="statusProps.textColor">
+    <v-list-item-title :title="data.name" class="title" :class="statusProps.textColor">
+      <NuxtLink external target="_blank" rel="noopener" :to="getNyaaTorrentLink(data.id)">
         {{ data.name }}
-      </v-list-item-title>
-    </NuxtLink>
+      </NuxtLink>
+    </v-list-item-title>
 
     <div class="meta-container mt-2">
       <v-chip
@@ -63,7 +63,7 @@ const publicDate = computed(() => new Date(props.data.date))
       <ui-leechers-tag class="meta-item" :count="Number(data.leechers)" />
     </div>
 
-    <template v-slot:append>
+    <template #append>
       <v-btn color="grey-lighten-1" icon="mdi:mdi-information" variant="text"></v-btn>
     </template>
   </v-list-item>
@@ -75,6 +75,7 @@ const publicDate = computed(() => new Date(props.data.date))
 }
 
 .title {
+  width: fit-content;
   cursor: pointer;
   font-weight: 600;
 }
@@ -94,4 +95,4 @@ const publicDate = computed(() => new Date(props.data.date))
 .meta-item:not(:last-child) {
   margin-right: 8px;
 }
-
+</style>

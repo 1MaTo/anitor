@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TorrentListItem from './ui/TorrentListItem.vue'
 import { si } from 'nyaapi'
+import TorrentListItem from './ui/TorrentListItem.vue'
 
 const data = ref([
   {
