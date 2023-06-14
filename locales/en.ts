@@ -12,7 +12,11 @@ const strings = {
       success: 'Trusted',
       danger: 'Remake'
     }
-  }
+  },
+  leecher: 'Leacher | Leachers',
+  seeder: 'Seeder | Seeders',
+  'upload-date': 'Upload date',
+  'torrent-sub-category': 'Torrent subcategory'
 }
 
 const functions = {}

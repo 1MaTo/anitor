@@ -12,7 +12,11 @@ const strings = {
       success: 'Проверенный',
       danger: 'Ремейк'
     }
-  }
+  },
+  leecher: 'Лич | Личи',
+  seeder: 'Сид | Сиды',
+  'upload-date': 'Дата публикации',
+  'torrent-sub-category': 'Подкатегория торрента'
 }
 
 const functions = {}
