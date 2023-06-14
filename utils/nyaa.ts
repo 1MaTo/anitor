@@ -1,5 +1,3 @@
-export enum TorrentStatus {
-  Success = 'success',
-  Danger = 'danger',
-  Default = 'default'
-}
+const NYAA_ENDPOINT = 'https://nyaa.si'
+
+export const getNyaaTorrentLink = (id: string) => `${NYAA_ENDPOINT}/view/${id}`

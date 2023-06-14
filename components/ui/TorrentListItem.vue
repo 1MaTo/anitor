@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { si } from 'nyaapi'
+import { si } from 'nyaapi';
+import { TorrentStatus } from '~/types/nyaa';
+import SeedersTag from './SeedersTag.vue';
 const props = defineProps<{ data: si.Torrent }>()
 
 const statusProps = computed(() => {
@@ -8,7 +10,7 @@ const statusProps = computed(() => {
       return {
         color: 'red',
         icon: 'fa-solid fa-arrow-rotate-left',
-        textColor: 'text-red'
+        textColor: 'text-red-darken-4'
       }
 
     case TorrentStatus.Success:
@@ -19,32 +21,14 @@ const statusProps = computed(() => {
   }
 })
 
-const publicDate = computed(() => new Date(props.data.date).toLocaleString())
+const publicDate = computed(() => new Date(props.data.date))
 </script>
 
 <template>
-  <v-list-item class="container py-4" href="" :ripple="false" border>
-    <v-list-item-title :title="data.name" class="title" :class="statusProps.textColor">
-      {{ data.name }}
-    </v-list-item-title>
-
-    <div class="meta-container">
-      <v-chip size="small" class="meta-item default" label prepend-icon="fa-regular fa-calendar">
-        {{ publicDate }}
-      </v-chip>
-
-      <v-chip
-        size="small"
-        class="meta-item default"
-        label
-        prepend-icon="fa-solid fa-file-arrow-down"
-      >
-        {{ data.filesize }}
-      </v-chip>
-
-      <v-chip size="small" class="meta-item default" label prepend-icon="mdi:mdi-translate-variant">
-        {{ $t(`nyaa.sub-category.${data.sub_category}`) }}
-      </v-chip>
+  <v-list-item class="container py-6" href="" :ripple="false" border>
+    <div class="mb-2">
+      <ui-date-tag class="meta-item default" :date="publicDate" />
+      <ui-torrent-sub-category-tag class="meta-item default" :category="data.sub_category" />
 
       <v-chip
         v-if="data.status !== TorrentStatus.Default"
@@ -56,6 +40,27 @@ const publicDate = computed(() => new Date(props.data.date).toLocaleString())
       >
         {{ $t(`nyaa.torrent-status.${data.status}`) }}
       </v-chip>
+    </div>
+
+    <NuxtLink external target="_blank" rel="noopener" :to="getNyaaTorrentLink(data.id)">
+      <v-list-item-title :title="data.name" class="title" :class="statusProps.textColor">
+        {{ data.name }}
+      </v-list-item-title>
+    </NuxtLink>
+
+    <div class="meta-container mt-2">
+      <v-chip
+        size="small"
+        class="meta-item default"
+        label
+        prepend-icon="fa-solid fa-file-arrow-down"
+      >
+        {{ data.filesize }}
+      </v-chip>
+
+      <seeders-tag class="meta-item" :count="Number(data.seeders)" />
+
+      <ui-leechers-tag class="meta-item" :count="Number(data.leechers)" />
     </div>
 
     <template v-slot:append>
@@ -70,11 +75,15 @@ const publicDate = computed(() => new Date(props.data.date).toLocaleString())
 }
 
 .title {
+  cursor: pointer;
   font-weight: 600;
 }
 
+.title:hover {
+  text-decoration: underline;
+}
+
 .meta-container {
-  margin-top: 8px;
   display: flex;
 }
 
@@ -86,12 +95,3 @@ const publicDate = computed(() => new Date(props.data.date).toLocaleString())
   margin-right: 8px;
 }
 
-/* .meta-item {
-  display: flex;
-  line-height: 1.8em;
-  align-items: center;
-}
-.meta-item > i {
-  mar gin-right: 8px;
-}*/
-</style>
