@@ -1207,7 +1207,7 @@ const data = ref([
 </script>
 
 <template>
-  <v-list lines="two">
+  <v-list class="py-0">
     <torrent-list-item v-for="item in data" :key="item.id" :data="item" />
   </v-list>
 </template>
