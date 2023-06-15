@@ -35,14 +35,32 @@ const publicDate = computed(() => new Date(props.data.date))
       <ui-date-tag class="meta-item default" :date="publicDate" />
       <ui-torrent-sub-category-tag class="meta-item default" :category="data.sub_category" />
       <ui-file-size-tag class="meta-item default" :file-size="data.filesize" />
+      <ui-complete-downloads-tag class="meta-item default" :count="Number(data.completed)" />
       <ui-seeders-tag class="meta-item" :count="Number(data.seeders)" />
       <ui-leechers-tag class="meta-item" :count="Number(data.leechers)" />
       <ui-torrent-status-tag class="meta-item" :status="data.status" />
     </div>
 
     <template #append>
-      <v-btn color="grey-lighten-1" icon="mdi:mdi-information" variant="text"></v-btn>
-      <v-btn color="grey-lighten-1" icon="mdi:mdi-information" variant="text"></v-btn>
+      <nuxt-link external target="_blank" rel="noopener" :to="data.torrent">
+        <v-btn
+          :title="$t('nyaa.download-torrent')"
+          size="small"
+          color="grey-lighten-1"
+          icon="fa-solid fa-file-arrow-down"
+          variant="text"
+        ></v-btn>
+      </nuxt-link>
+      <nuxt-link :to="data.magnet">
+        <v-btn
+          :title="$t('nyaa.download-magnet')"
+          size="small"
+          class="ml-2"
+          color="grey-lighten-1"
+          icon="fa-solid fa-magnet"
+          variant="text"
+        ></v-btn>
+      </nuxt-link>
     </template>
   </v-list-item>
 </template>
