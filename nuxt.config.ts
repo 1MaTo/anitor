@@ -2,6 +2,10 @@ import vuetify from 'vite-plugin-vuetify'
 import { APP_NAME, APP_DESCRIPTION } from './utils/app'
 import { AppLocale } from './types/locale'
 
+/* import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'url'
+import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite' */
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -29,7 +33,12 @@ export default defineNuxtConfig({
     }
   },
   vite: {
-    plugins: [vuetify()],
+    plugins: [
+      vuetify()
+      /* VueI18nVitePlugin({
+        include: [resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')]
+      }) */
+    ],
     define: {
       __VUE_I18N_FULL_INSTALL__: true,
       __VUE_I18N_LEGACY_API__: false,
