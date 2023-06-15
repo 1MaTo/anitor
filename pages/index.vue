@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import SearchField from '~/components/ui/SearchField.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>
