@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { si } from 'nyaapi'
-import SeedersTag from './SeedersTag.vue'
 import { TorrentStatus } from '~/types/nyaa'
 const props = defineProps<{ data: si.Torrent }>()
 
@@ -25,45 +24,24 @@ const publicDate = computed(() => new Date(props.data.date))
 </script>
 
 <template>
-  <v-list-item class="container py-6" href="" :ripple="false" border>
-    <div class="mb-2">
-      <ui-date-tag class="meta-item default" :date="publicDate" />
-      <ui-torrent-sub-category-tag class="meta-item default" :category="data.sub_category" />
-
-      <v-chip
-        v-if="data.status !== TorrentStatus.Default"
-        size="small"
-        label
-        class="meta-item"
-        :color="statusProps.color"
-        :prepend-icon="statusProps.icon"
-      >
-        {{ $t(`nyaa.torrent-status.${data.status}`) }}
-      </v-chip>
-    </div>
-
+  <v-list-item class="container py-3" href="" :ripple="false" border>
     <v-list-item-title :title="data.name" class="title" :class="statusProps.textColor">
-      <NuxtLink external target="_blank" rel="noopener" :to="getNyaaTorrentLink(data.id)">
+      <nuxt-link external target="_blank" rel="noopener" :to="getNyaaTorrentLink(data.id)">
         {{ data.name }}
-      </NuxtLink>
+      </nuxt-link>
     </v-list-item-title>
 
     <div class="meta-container mt-2">
-      <v-chip
-        size="small"
-        class="meta-item default"
-        label
-        prepend-icon="fa-solid fa-file-arrow-down"
-      >
-        {{ data.filesize }}
-      </v-chip>
-
-      <seeders-tag class="meta-item" :count="Number(data.seeders)" />
-
+      <ui-date-tag class="meta-item default" :date="publicDate" />
+      <ui-torrent-sub-category-tag class="meta-item default" :category="data.sub_category" />
+      <ui-file-size-tag class="meta-item default" :file-size="data.filesize" />
+      <ui-seeders-tag class="meta-item" :count="Number(data.seeders)" />
       <ui-leechers-tag class="meta-item" :count="Number(data.leechers)" />
+      <ui-torrent-status-tag class="meta-item" :status="data.status" />
     </div>
 
     <template #append>
+      <v-btn color="grey-lighten-1" icon="mdi:mdi-information" variant="text"></v-btn>
       <v-btn color="grey-lighten-1" icon="mdi:mdi-information" variant="text"></v-btn>
     </template>
   </v-list-item>
