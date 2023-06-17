@@ -14,8 +14,10 @@
     "postinstall": "patch-package && nuxt prepare "
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
     "nyaapi": "^2.4.4",
     "patch-package": "^7.0.0",
+    "pinia": "^2.1.4",
     "vue-i18n": "^9.2.2",
     "vuetify": "^3.3.3"
   },
@@ -40,5 +42,8 @@
     "unplugin-auto-import": "^0.16.4",
     "vite-plugin-vuetify": "^1.0.2",
     "vitest": "^0.31.0"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }
