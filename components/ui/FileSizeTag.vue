@@ -6,6 +6,6 @@ withDefaults(defineProps<{ fileSize?: string }>(), {
 
 <template>
   <v-chip size="small" label prepend-icon="fa-solid fa-file-arrow-down" :title="$t('size')">
-    {{ fileSize }}</v-chip
-  >
+    {{ fileSize }}
+  </v-chip>
 </template>
