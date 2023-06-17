@@ -5,10 +5,15 @@
     <v-container>
       <v-row>
         <v-col>
-          <ui-search-field size="big" />
+          <torrent-search />
         </v-col>
       </v-row>
       <v-row>
+        <v-col class="py-0">
+          <search-filters />
+        </v-col>
+      </v-row>
+      <v-row class="py-4">
         <v-col>
           <torrent-list />
         </v-col>
