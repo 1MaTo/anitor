@@ -6,8 +6,9 @@ const strings = {
   'upload-date': 'Upload date',
   'torrent-sub-category': 'Torrent subcategory',
   size: 'Size',
-
+  'no-items-found': 'No items found',
   nyaa: {
+    'request-failed': 'Request to Nyaa.si failed',
     'download-torrent': 'Download .torrent',
     'download-magnet': 'Magnet link',
     'all-downloads': 'All downloads',

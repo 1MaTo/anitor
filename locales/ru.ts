@@ -6,7 +6,9 @@ const strings = {
   'upload-date': 'Дата публикации',
   'torrent-sub-category': 'Подкатегория торрента',
   size: 'Размер',
+  'no-items-found': 'Ничего не найдено',
   nyaa: {
+    'request-failed': 'Ошибка запроса к Nyaa.si',
     'download-torrent': 'Скачать .torrent',
     'download-magnet': 'Magnet ссылка',
     'all-downloads': 'Всего скачиваний',
