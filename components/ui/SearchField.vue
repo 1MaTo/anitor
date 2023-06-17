@@ -11,8 +11,8 @@ const props = defineProps({
   size: { type: String, default: 'default' }
 })
 defineEmits<{
-  (e: 'update:modelValue', payload: Event): void
-  (e: 'submit'): void
+  (e: 'update:modelValue', payload: string): void
+  (e: 'submit', payload: string): void
 }>()
 
 const focused = ref(false)
@@ -32,18 +32,19 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.body.removeEventListener('keydown', handleFocusOnField)
 })
-</script>
 
+const isLoading = computed(() => props.loading)
+</script>
 <template>
   <div>
     <v-sheet
       class="container"
       :class="{
-        disabled: props.disabled,
-        default: !props.size || props.size === 'default',
-        big: props.size === 'big',
+        disabled: disabled,
+        default: !size || size === 'default',
+        big: size === 'big',
         rounded,
-        highlight: focused && props.highlightOnFocus
+        highlight: focused && highlightOnFocus
       }"
       border
       :rounded="rounded ? 'pill' : 'rounded'"
@@ -53,7 +54,7 @@ onBeforeUnmount(() => {
           <v-col cols="auto" align="center" class="icon-col">
             <v-btn
               data-testid="search-button"
-              :disabled="props.disabled"
+              :disabled="disabled"
               elevation="0"
               class="search-button"
               :class="{ rounded: rounded }"
@@ -72,14 +73,18 @@ onBeforeUnmount(() => {
                 <input
                   ref="input"
                   class="input"
+                  :class="{ 'text-grey-darken-1': loading }"
                   type="text"
-                  :disabled="props.disabled"
+                  :readonly="loading"
+                  :disabled="disabled"
                   :value="modelValue"
-                  :placeholder="props.placeholder"
+                  :placeholder="placeholder"
+                  @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
                   @focusin="focused = true"
                   @focusout="focused = false"
-                  @keydown.enter="$emit('submit')"
-                  @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+                  @keydown.enter="
+                    loading ? undefined : $emit('submit', ($event.target as HTMLInputElement).value)
+                  "
                 />
               </v-col>
             </v-row>
