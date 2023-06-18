@@ -22,6 +22,7 @@ export default defineConfig({
         // presets
         'vue',
         'vue-i18n',
+        'pinia',
         // custom
         {
           vuetify: ['createVuetify']
@@ -78,6 +79,6 @@ export default defineConfig({
 
     silent: false,
     deps: { inline: ['vuetify'] },
-    setupFiles: ['./tests/setup/setup-window.ts', './tests//setup/setup-plugins.ts']
+    setupFiles: ['./tests/setup/setup-window.ts', './tests/setup/setup-plugins.ts']
   }
 })
