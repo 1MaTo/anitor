@@ -3,7 +3,7 @@ defineProps<{
   readonly?: boolean
   loading?: string | boolean
   modelValue?: string | boolean
-  label: string
+  label?: string
 }>()
 
 defineEmits<{
@@ -23,7 +23,7 @@ defineEmits<{
     @update:model-value="(event) => $emit('update:modelValue', event)"
   >
     <template #label="props">
-      <div class="no-wrap">{{ props.label }}</div>
+      <div data-testid="switch-label" class="no-wrap">{{ props.label }}</div>
     </template>
   </v-switch>
 </template>
