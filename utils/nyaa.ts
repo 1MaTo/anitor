@@ -1,5 +1,5 @@
 const NYAA_ENDPOINT = 'https://nyaa.si'
-const BLU_RAY_QUERY = 'bd'
+const BLU_RAY_QUERY = 'bd|"blu-ray"|"blu ray"'
 
 export const getNyaaTorrentLink = (id: string) => `${NYAA_ENDPOINT}/view/${id}`
 
