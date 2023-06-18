@@ -7,13 +7,23 @@ export const useTorrentStore = defineStore('torrent', () => {
   const errorMsg = ref('')
 
   const searchText = ref('')
-  const blueRayFilter = ref(true)
+  const bluRayFilter = ref(true)
 
-  watch([searchText, blueRayFilter], async ([newText, newBlueRayFilter]) => {
+  watch([searchText, bluRayFilter], async ([newText, newBluRayFilter]) => {
+    await fetchTorrents(newText, { bluRay: newBluRayFilter })
+  })
+
+  const fetchTorrents = async (query: string, filters?: { bluRay?: boolean }) => {
     loadingTorrents.value = true
+    let textQuery = query
+
+    if (filters?.bluRay) {
+      textQuery = modifyQuery.addBluRayQuery(textQuery)
+    }
+
     try {
       const fetchedTorrents = await $fetch('/api/nyaa/search', {
-        query: { query: searchText.value } as NyaaQuery
+        query: { query: textQuery } as NyaaQuery
       })
       torrents.value = fetchedTorrents
     } catch (error: any) {
@@ -22,26 +32,32 @@ export const useTorrentStore = defineStore('torrent', () => {
     } finally {
       loadingTorrents.value = false
     }
-  })
+  }
 
   const setSearchText = (value: string) => {
     searchText.value = value
   }
 
-  const setTorrentFilter = (value: boolean) => {
-    blueRayFilter.value = value
+  const setBluRayFilter = (value: boolean) => {
+    bluRayFilter.value = value
+  }
+
+  const initializeDefaultTorrents = async () => {
+    await fetchTorrents(searchText.value, { bluRay: bluRayFilter.value })
   }
 
   return {
     torrents,
 
-    blueRayFilter,
+    bluRayFilter,
     searchText,
 
     loadingTorrents,
     errorMsg,
 
     setSearchText,
-    setTorrentFilter
+    setBluRayFilter,
+
+    initializeDefaultTorrents
   }
 })
