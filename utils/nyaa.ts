@@ -20,5 +20,5 @@ export const DEFAULT_NYAA_SEARCH_TERMS = {
 export const getNyaaTorrents = async (query?: Partial<NyaaQuery>) => {
   const queryString = query ? `?${new URLSearchParams(query as any)}` : ''
 
-  return (await $fetch(`/api/nyaa/search${queryString}}`)) as si.Torrent[]
+  return (await $fetch(`/api/nyaa/search${queryString}`)) as si.Torrent[]
 }
