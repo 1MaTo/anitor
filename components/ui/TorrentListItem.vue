@@ -73,7 +73,6 @@ const publicDate = computed(() => new Date(props.data.date))
 .title {
   width: fit-content;
   cursor: pointer;
-  font-weight: 600;
 }
 
 .title:hover {
