@@ -15,6 +15,7 @@ const handleSetSearchText = (searchString: string) => {
     <v-row no-gutters>
       <v-col>
         <ui-search-field
+          :placeholder="$t('search-torrents')"
           v-model="searchText"
           size="big"
           :loading="store.loadingTorrents"

@@ -17,7 +17,7 @@ const loading = computed(() =>
     <v-row no-gutters justify="end" style="height: 40px">
       <v-col class="flex-grow-0">
         <ui-inline-switch
-          :label="$t('only-blue-ray')"
+          :label="$t('only-blu-ray')"
           :readonly="store.loadingTorrents"
           :loading="loading"
           :model-value="store.bluRayFilter"

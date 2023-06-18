@@ -7,7 +7,7 @@ const strings = {
   'torrent-sub-category': 'Подкатегория торрента',
   size: 'Размер',
   'no-items-found': 'Ничего не найдено',
-  'only-blue-ray': 'Только Blue-ray',
+  'only-blu-ray': 'BD',
   nyaa: {
     'request-failed': 'Ошибка запроса к Nyaa.si',
     'download-torrent': 'Скачать .torrent',
