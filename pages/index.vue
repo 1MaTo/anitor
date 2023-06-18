@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useTorrentStore } from '~/store/useTorrentStore'
+
+const store = useTorrentStore()
+onMounted(() => {
+  store.initializeDefaultTorrents()
+})
+</script>
 
 <template>
   <div>
