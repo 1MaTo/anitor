@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useTorrentStore } from '~/store/useTorrentStore'
 import TorrentListItem from './ui/TorrentListItem.vue'
+import { useTorrentStore } from '~/store/useTorrentStore'
 
 const store = useTorrentStore()
 </script>
@@ -12,8 +12,8 @@ const store = useTorrentStore()
     </v-fade-transition>
     <v-fade-transition group leave-absolute>
       <torrent-list-item
-        v-if="store.torrents.length > 0"
         v-for="item in store.torrents"
+        v-if="store.torrents.length > 0"
         :key="item.id"
         :data="item"
       />

@@ -32,8 +32,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.body.removeEventListener('keydown', handleFocusOnField)
 })
-
-const isLoading = computed(() => props.loading)
 </script>
 <template>
   <div>

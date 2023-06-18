@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect, it } from 'vitest'
 import Component from '~/components/ui/NoItemsPlaceholder.vue'
-import en from '~/locales/en'
 
 it('Has valid text', () => {
   expect(Component).toBeTruthy()

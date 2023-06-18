@@ -1,5 +1,6 @@
 import { si } from 'nyaapi'
 import { NyaaQuery } from '~/types/nyaa'
+import { getNyaaTorrents } from '~/utils/nyaa'
 
 export const useTorrentStore = defineStore('torrent', () => {
   const torrents = ref<si.Torrent[]>([])
@@ -22,9 +23,7 @@ export const useTorrentStore = defineStore('torrent', () => {
     }
 
     try {
-      const fetchedTorrents = await $fetch('/api/nyaa/search', {
-        query: { query: textQuery } as NyaaQuery
-      })
+      const fetchedTorrents = await getNyaaTorrents({ query: textQuery })
       torrents.value = fetchedTorrents
     } catch (error: any) {
       errorMsg.value = error.message

@@ -5,7 +5,7 @@ const store = useTorrentStore()
 
 const searchText = ref('')
 
-const handleSetSearchText = async (searchString: string) => {
+const handleSetSearchText = (searchString: string) => {
   store.setSearchText(searchString)
 }
 </script>
@@ -15,8 +15,8 @@ const handleSetSearchText = async (searchString: string) => {
     <v-row no-gutters>
       <v-col>
         <ui-search-field
-          size="big"
           v-model="searchText"
+          size="big"
           :loading="store.loadingTorrents"
           @submit="handleSetSearchText"
         />
