@@ -1,5 +1,5 @@
 import { si } from 'nyaapi'
-import { NyaaQuery } from '~/server/utils'
+import { NyaaQuery } from '~/types/nyaa'
 
 export const getNyaaTorrents = async (query?: Partial<NyaaQuery>) => {
   const queryString = query ? `?${new URLSearchParams(query as any)}` : ''

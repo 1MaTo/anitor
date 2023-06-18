@@ -1,5 +1,5 @@
 import { si } from 'nyaapi'
-import { NyaaQuery } from '~/server/utils'
+import { NyaaQuery } from '~/types/nyaa'
 
 export const useTorrentStore = defineStore('torrent', () => {
   const torrents = ref<si.Torrent[]>([])
