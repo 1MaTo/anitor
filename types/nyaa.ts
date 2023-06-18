@@ -1,3 +1,8 @@
+export type NyaaQuery = {
+  query?: string
+  count?: number
+}
+
 export enum TorrentStatus {
   Success = 'success',
   Danger = 'danger',

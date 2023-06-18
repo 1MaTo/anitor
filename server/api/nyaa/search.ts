@@ -1,5 +1,6 @@
 import { si } from 'nyaapi'
-import { DEFAULT_NYAA_SEARCH_TERMS, NyaaQuery } from '../../utils'
+import { DEFAULT_NYAA_SEARCH_TERMS } from '../../../utils/nyaa'
+import { NyaaQuery } from '../../../types/nyaa'
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event) as NyaaQuery
