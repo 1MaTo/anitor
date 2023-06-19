@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ count?: number }>(), { count: 0 })
+withDefaults(defineProps<{ count?: number; withIcon?: boolean }>(), { count: 0, withIcon: true })
 </script>
 
 <template>
@@ -7,8 +7,8 @@ withDefaults(defineProps<{ count?: number }>(), { count: 0 })
     :title="$t('leecher', 2)"
     size="small"
     label
-    prepend-icon="fa-solid fa-caret-down"
-    color="red"
+    :prepend-icon="withIcon ? 'mdi:mdi-account-arrow-down' : undefined"
+    :color="count === 0 ? '' : 'red'"
     >{{ count }}
   </v-chip>
 </template>

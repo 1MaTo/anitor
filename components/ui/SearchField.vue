@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VNodeRef } from 'nuxt/dist/app/compat/capi'
 
-const props = defineProps({
+defineProps({
   modelValue: { type: String, default: '' },
   placeholder: { type: String, default: 'Search' },
   disabled: Boolean,
