@@ -22,3 +22,22 @@ export const getNyaaTorrents = async (query?: Partial<NyaaQuery>) => {
 
   return (await $fetch(`/api/nyaa/search${queryString}`)) as si.Torrent[]
 }
+
+export const getTorrentColumnsMaxLength = (
+  torrents: si.Torrent[]
+): {
+  filesize: number
+  seeders: number
+  leechers: number
+  completed: number
+} => {
+  const fields = ['filesize', 'leechers', 'seeders', 'completed'] as (keyof si.Torrent)[]
+
+  return torrents.reduce((sizes: any, torrent) => {
+    fields.forEach((fieldName) => {
+      sizes[fieldName] = Math.max(sizes[fieldName] || 0, torrent[fieldName].length)
+    })
+
+    return sizes
+  }, {})
+}
