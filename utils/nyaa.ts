@@ -2,11 +2,11 @@ import { si } from 'nyaapi'
 import { NyaaQuery } from '~/types/nyaa'
 
 const NYAA_ENDPOINT = 'https://nyaa.si'
-const BLU_RAY_QUERY = 'bd|"blu-ray"|"blu ray"'
+const BLU_RAY_QUERY = '((bd)|(blu-ray)|(blu ray))'
 
 export const getNyaaTorrentLink = (id: string) => `${NYAA_ENDPOINT}/view/${id}`
 
-const addBluRayQuery = (value: string) => `${value} ${BLU_RAY_QUERY}`
+const addBluRayQuery = (value: string) => `${value}${BLU_RAY_QUERY}`
 
 export const modifyQuery = { addBluRayQuery }
 
