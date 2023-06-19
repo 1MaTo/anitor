@@ -33,7 +33,7 @@ const publicDate = computed(() => new Date(props.data.date))
 
     <div class="meta-container mt-2">
       <ui-date-tag class="meta-item default" :date="publicDate" />
-      <ui-torrent-sub-category-tag class="meta-item default" :category="data.sub_category" />
+      <ui-torrent-sub-category-tag class="meta-item default" :category="data.sub_category as any" />
       <ui-file-size-tag class="meta-item default" :file-size="data.filesize" />
       <ui-complete-downloads-tag class="meta-item default" :count="Number(data.completed)" />
       <ui-seeders-tag class="meta-item" :count="Number(data.seeders)" />
