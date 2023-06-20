@@ -20,7 +20,7 @@ const input = ref<VNodeRef | null>(null)
 
 const handleFocusOnField = (payload: KeyboardEvent) => {
   if (focused.value) return
-  if (payload.key !== '/') return
+  if (payload.code !== 'Slash') return
   payload.preventDefault()
   input.value.focus()
 }
