@@ -9,6 +9,9 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite' */
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
+  runtimeConfig: {
+    malClientId: process.env.MAL_CLIENT_ID
+  },
   app: {
     head: {
       title: APP_NAME,
