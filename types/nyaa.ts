@@ -1,6 +1,16 @@
+export enum NyaaSortField {
+  Size = 'size',
+  Date = 'id',
+  Seeders = 'seeders',
+  Leechers = 'leechers',
+  Downloads = 'downloads'
+}
+
 export type NyaaQuery = {
   query?: string
   count?: number
+  sortField?: NyaaSortField
+  sortOrder?: 'asc' | 'desc'
 }
 
 export enum TorrentStatus {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify/lib/framework.mjs'
+import { si } from 'nyaapi'
 import { SortOrder } from '~/types/sort'
 import { useTorrentStore } from '~/store/useTorrentStore'
 
@@ -32,13 +33,27 @@ const seedersWidth = computed(() => getTagMaxWidth(props.maxSeedersLength, iconW
 const leechersWidth = computed(() => getTagMaxWidth(props.maxLeechersLength, iconWidth.value))
 const completedWidth = computed(() => getTagMaxWidth(props.maxCompletedLength, iconWidth.value))
 
-const fileSizeOrder = ref(SortOrder.None)
-const dateOrder = ref(SortOrder.None)
-const seedersOrder = ref(SortOrder.None)
-const leechersOrder = ref(SortOrder.None)
-const completedOrder = ref(SortOrder.None)
-
 const store = useTorrentStore()
+
+const fileSizeField = computed(() =>
+  store.sort.field === 'filesize' ? store.sort.order : SortOrder.None
+)
+const dateField = computed(() => (store.sort.field === 'date' ? store.sort.order : SortOrder.None))
+const seedersField = computed(() =>
+  store.sort.field === 'seeders' ? store.sort.order : SortOrder.None
+)
+const leechersField = computed(() =>
+  store.sort.field === 'leechers' ? store.sort.order : SortOrder.None
+)
+const completedField = computed(() =>
+  store.sort.field === 'completed' ? store.sort.order : SortOrder.None
+)
+
+const handleUpdateSort = (field: keyof si.Torrent, order: SortOrder) => {
+  store.setSort({ field, order })
+}
+
+watch(store, () => {})
 </script>
 
 <template>
@@ -50,32 +65,40 @@ const store = useTorrentStore()
       class="prop filesize default-tag"
     >
       <ui-sort-chip
-        v-model="fileSizeOrder"
+        non-empty
+        :model-value="fileSizeField"
         :disabled="store.loadingTorrents"
         class="w-100 no-select"
         :text="$t('size')"
+        @update:model-value="(sortOrder) => handleUpdateSort('filesize', sortOrder)"
       />
     </div>
     <div class="prop default-tag" :style="{ minWidth: '150px', maxWidth: '150px' }">
       <ui-sort-chip
-        v-model="dateOrder"
+        non-empty
+        :model-value="dateField"
         :disabled="store.loadingTorrents"
         class="w-100 no-select"
         :text="$t('upload-date')"
+        @update:model-value="(sortOrder) => handleUpdateSort('date', sortOrder)"
       />
     </div>
     <div :style="{ minWidth: seedersWidth, maxWidth: seedersWidth }" class="prop user-count">
       <ui-sort-chip
-        v-model="seedersOrder"
+        non-empty
+        :model-value="seedersField"
         :disabled="store.loadingTorrents"
         class="w-100 no-select"
+        @update:model-value="(sortOrder) => handleUpdateSort('seeders', sortOrder)"
       />
     </div>
     <div :style="{ minWidth: leechersWidth, maxWidth: leechersWidth }" class="prop user-count">
       <ui-sort-chip
-        v-model="leechersOrder"
+        non-empty
+        :model-value="leechersField"
         :disabled="store.loadingTorrents"
         class="w-100 no-select"
+        @update:model-value="(sortOrder) => handleUpdateSort('leechers', sortOrder)"
       />
     </div>
     <div
@@ -83,9 +106,11 @@ const store = useTorrentStore()
       class="prop downloads-complete-count default-tag"
     >
       <ui-sort-chip
-        v-model="completedOrder"
+        non-empty
+        :model-value="completedField"
         :disabled="store.loadingTorrents"
         class="w-100 no-select"
+        @update:model-value="(sortOrder) => handleUpdateSort('completed', sortOrder)"
       />
     </div>
   </div>

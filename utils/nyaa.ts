@@ -1,5 +1,5 @@
 import { si } from 'nyaapi'
-import { NyaaQuery } from '~/types/nyaa'
+import { NyaaQuery, NyaaSortField } from '~/types/nyaa'
 
 const NYAA_ENDPOINT = 'https://nyaa.si'
 const BLU_RAY_QUERY = '((bd)|(blu-ray)|(blu ray))'
@@ -18,7 +18,7 @@ export const DEFAULT_NYAA_SEARCH_TERMS = {
 } as Partial<si.SearchOptions>
 
 export const getNyaaTorrents = async (query?: Partial<NyaaQuery>) => {
-  const queryString = query ? `?${new URLSearchParams(query as any)}` : ''
+  const queryString = query ? `?${new URLSearchParams(removeUndefinedFields(query) as any)}` : ''
 
   return (await $fetch(`/api/nyaa/search${queryString}`)) as si.Torrent[]
 }
@@ -40,4 +40,35 @@ export const getTorrentColumnsMaxLength = (
 
     return sizes
   }, {})
+}
+
+export const resolveSortFieldToNyaaSortField = (field?: keyof si.Torrent) => {
+  switch (field) {
+    case 'filesize':
+      return NyaaSortField.Size
+
+    case 'date':
+      return NyaaSortField.Date
+
+    case 'seeders':
+      return NyaaSortField.Seeders
+
+    case 'leechers':
+      return NyaaSortField.Leechers
+
+    case 'completed':
+      return NyaaSortField.Downloads
+
+    default:
+      return undefined
+  }
+}
+
+export const removeUndefinedFields = (object: any) => {
+  const newObj = {} as any
+  Object.keys(object).forEach((key) => {
+    if (object[key] === Object(object[key])) newObj[key] = removeUndefinedFields(object[key])
+    else if (object[key] !== undefined) newObj[key] = object[key]
+  })
+  return newObj
 }

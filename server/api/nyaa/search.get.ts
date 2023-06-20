@@ -8,7 +8,9 @@ export default defineEventHandler(async (event) => {
   const terms = {
     ...DEFAULT_NYAA_SEARCH_TERMS,
     n: Number(query.count) || DEFAULT_NYAA_SEARCH_TERMS.n,
-    term: query.query || DEFAULT_NYAA_SEARCH_TERMS.term
+    term: query.query || DEFAULT_NYAA_SEARCH_TERMS.term,
+    sort: query.sortField,
+    direction: query.sortOrder
   } as si.SearchOptionsTerm
 
   try {
