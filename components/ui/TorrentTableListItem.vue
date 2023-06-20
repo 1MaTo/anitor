@@ -55,6 +55,8 @@ const completedWidth = computed(() => getTagMaxWidth(props.maxCompletedLength, i
 
 <template>
   <v-sheet class="pa-1 container">
+    <div class="row-indicator bg-primary" />
+    <div class="row-indicator after bg-primary" />
     <div class="prop">
       <ui-torrent-sub-category-tag :category="(data.sub_category as any)" />
     </div>
@@ -120,6 +122,30 @@ const completedWidth = computed(() => getTagMaxWidth(props.maxCompletedLength, i
 <style scoped>
 .container {
   display: flex;
+  position: relative;
+}
+
+.container:hover .row-indicator {
+  transform: scaleX(1);
+}
+
+.row-indicator {
+  --row-indicator-width: 2px;
+  position: absolute;
+  top: calc(50% - 35%);
+  height: 70%;
+  width: var(--row-indicator-width);
+  left: calc(var(--row-indicator-width) * -1);
+  transform: scaleX(0);
+  transition: transform 0.1s ease;
+  transform-origin: center right;
+}
+
+.row-indicator.after {
+  width: var(--row-indicator-width);
+  left: unset;
+  right: calc(var(--row-indicator-width) * -1);
+  transform-origin: center left;
 }
 
 .prop {
