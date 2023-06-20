@@ -18,13 +18,13 @@ const order = ref(props.modelValue)
 const icon = computed(() => {
   switch (order.value) {
     case SortOrder.None:
-      return 'fa-solid fa-sort' /* 'mdi:mdi-sort' */
+      return 'fa-solid fa-sort'
 
     case SortOrder.Asc:
-      return 'fa fa-arrow-down-short-wide' /* 'mdi:mdi-sort-ascending' */
+      return 'fa fa-arrow-down-short-wide'
 
     case SortOrder.Desc:
-      return 'fa fa-arrow-up-wide-short' /* 'mdi:mdi-sort-descending' */
+      return 'fa fa-arrow-up-wide-short'
 
     default:
       return ''
