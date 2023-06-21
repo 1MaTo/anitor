@@ -31,7 +31,8 @@ export const useTorrentStore = defineStore('torrent', () => {
       const fetchedTorrents = await getNyaaTorrents({
         query: textQuery,
         sortField: resolveSortFieldToNyaaSortField(filters?.sort?.field),
-        sortOrder: filters?.sort?.order === SortOrder.None ? undefined : filters?.sort?.order
+        sortOrder: filters?.sort?.order === SortOrder.None ? undefined : filters?.sort?.order,
+        count: 1
       })
       torrents.value = fetchedTorrents
       errorMsg.value = ''

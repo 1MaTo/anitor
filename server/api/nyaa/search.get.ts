@@ -1,15 +1,12 @@
 import { si } from 'nyaapi'
 import { NyaaQuery } from '../../../types/nyaa'
-import { REDIS_UPSTASH } from '../../../utils/app'
+import { CACHE_TTL } from '../../../utils/app'
 import { DEFAULT_NYAA_SEARCH_TERMS } from '../../../utils/nyaa'
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event) as NyaaQuery
 
-  console.log('api was requested')
-  setResponseHeader(event, 'Cache-Control', 's-maxage=10')
-  /*   const storage = useStorage(REDIS_UPSTASH)
-  await storage.setItem('test', 'new test 2', { ttl: 5 }) */
+  setResponseHeader(event, 'Cache-Control', `s-maxage=${CACHE_TTL['nyaa-search']}`)
 
   const terms = {
     ...DEFAULT_NYAA_SEARCH_TERMS,

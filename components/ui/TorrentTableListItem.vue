@@ -51,6 +51,12 @@ const fileSizeWidth = computed(() => getTagMaxWidth(props.maxFileSizeLength, ico
 const seedersWidth = computed(() => getTagMaxWidth(props.maxSeedersLength, iconWidth.value))
 const leechersWidth = computed(() => getTagMaxWidth(props.maxLeechersLength, iconWidth.value))
 const completedWidth = computed(() => getTagMaxWidth(props.maxCompletedLength, iconWidth.value))
+
+const { suggestions } = useAnimeSuggestions(props.data.name)
+
+watch(suggestions, (suggestions) => {
+  console.log(props.data.name, suggestions)
+})
 </script>
 
 <template>
