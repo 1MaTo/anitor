@@ -1,5 +1,5 @@
 import vuetify from 'vite-plugin-vuetify'
-import { APP_NAME, APP_DESCRIPTION } from './utils/app'
+import { APP_NAME, APP_DESCRIPTION, REDIS_KV } from './utils/app'
 import { AppLocale } from './types/locale'
 
 /* import { resolve, dirname } from 'node:path'
@@ -9,6 +9,11 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite' */
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
+  nitro: {
+    storage: {
+      [REDIS_KV]: { driver: 'vercelKV' }
+    }
+  },
   runtimeConfig: {
     malClientId: process.env.MAL_CLIENT_ID
   },
