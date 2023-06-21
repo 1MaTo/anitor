@@ -1,6 +1,6 @@
 import vuetify from 'vite-plugin-vuetify'
-import { APP_NAME, APP_DESCRIPTION, REDIS_KV } from './utils/app'
 import { AppLocale } from './types/locale'
+import { APP_DESCRIPTION, APP_NAME, REDIS_UPSTASH } from './utils/app'
 
 /* import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'url'
@@ -11,11 +11,17 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
   nitro: {
     storage: {
-      [REDIS_KV]: { driver: 'vercelKV' }
+      [REDIS_UPSTASH]: {
+        driver: 'redis',
+        url: process.env.REDIS_CONNECTION_STRING,
+        token: process.env.REDIS_REST_TOKEN
+      }
     }
   },
   runtimeConfig: {
-    malClientId: process.env.MAL_CLIENT_ID
+    malClientId: process.env.MAL_CLIENT_ID,
+    redisRestUrl: process.env.REDIS_REST_URL,
+    redisRestToken: process.env.REDIS_REST_TOKEN
   },
   app: {
     head: {

@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "@vercel/kv": "^0.2.1",
     "nyaapi": "^2.4.4",
     "patch-package": "^7.0.0",
     "pinia": "^2.1.4",
