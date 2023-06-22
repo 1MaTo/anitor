@@ -1,3 +1,5 @@
+import { i18n } from '~/plugins/setup/i18n'
+
 const strings = {
   test: 'English locale',
   'search-torrents': 'Search torrents',
@@ -8,6 +10,24 @@ const strings = {
   size: 'Size',
   'no-items-found': 'No items found',
   'only-blu-ray': 'BD',
+  type: 'Type',
+  status: 'Status',
+  studio: 'Studio | Studios',
+  genre: 'Genre | Genres',
+  'anime-media-type': {
+    unknown: 'unknown',
+    tv: 'TV Series',
+    ova: 'OVA',
+    movie: 'Movie',
+    special: 'Special',
+    ona: 'ONA',
+    music: 'Music'
+  },
+  'anime-status': {
+    finished_airing: 'Released',
+    currently_airing: 'Airing',
+    not_yet_aired: 'Planned'
+  },
   nyaa: {
     'request-failed': 'Request to Nyaa.si failed',
     'download-torrent': 'Download .torrent',
@@ -28,7 +48,18 @@ const strings = {
     }
   }
 }
-
-const functions = {}
+const functions = {
+  'anime-rating': {
+    g: ({ named }: { named: (str: string) => boolean }) => (named('long') ? 'All Ages' : 'G'),
+    pg: ({ named }: { named: (str: string) => boolean }) => (named('long') ? 'Children' : 'PG'),
+    pg_13: ({ named }: { named: (str: string) => boolean }) =>
+      named('long') ? 'Teens 13 and Older' : 'PG-13',
+    r: ({ named }: { named: (str: string) => boolean }) =>
+      named('long') ? '17+ (violence & profanity)' : 'R',
+    'r+': ({ named }: { named: (str: string) => boolean }) =>
+      named('long') ? 'Profanity & Mild Nudity' : 'R+',
+    rx: ({ named }: { named: (str: string) => boolean }) => (named('long') ? 'Hentai' : 'Rx')
+  }
+}
 
 export default { ...strings, ...functions }
