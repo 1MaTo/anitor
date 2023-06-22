@@ -52,11 +52,9 @@ const seedersWidth = computed(() => getTagMaxWidth(props.maxSeedersLength, iconW
 const leechersWidth = computed(() => getTagMaxWidth(props.maxLeechersLength, iconWidth.value))
 const completedWidth = computed(() => getTagMaxWidth(props.maxCompletedLength, iconWidth.value))
 
-const { suggestions } = useAnimeSuggestions(props.data.name)
-
-watch(suggestions, (suggestions) => {
-  console.log(props.data.name, suggestions)
-})
+const animePopper = ref(false)
+const menuId = computed(() => 'anime-suggestion-activator-id-' + props.data.id)
+const { suggestions, loading } = useAnimeSuggestions(props.data.name)
 </script>
 
 <template>
@@ -66,9 +64,11 @@ watch(suggestions, (suggestions) => {
     <div class="prop">
       <ui-torrent-sub-category-tag :category="(data.sub_category as any)" />
     </div>
-    <div class="prop name text-clip" :title="data.name">
+
+    <div class="prop name text-clip">
       <v-hover v-slot="{ isHovering, props: hoverProps }">
         <nuxt-link
+          :id="menuId"
           v-bind="hoverProps"
           :class="{
             'text-medium-emphasis': !isHovering && !statusColorClass,
@@ -85,7 +85,22 @@ watch(suggestions, (suggestions) => {
           {{ data.name }}
         </nuxt-link>
       </v-hover>
+      <v-menu
+        :activator="`#${menuId}`"
+        v-model="animePopper"
+        open-on-hover
+        offset="50"
+        :close-on-content-click="false"
+        location="right center"
+        transition="slide-x-transition"
+      >
+        <ui-anime-card-suggestions
+          v-if="!loading && suggestions.length > 0"
+          :suggestions="suggestions"
+        />
+      </v-menu>
     </div>
+
     <div :style="{ width: fileSizeWidth }" class="prop filesize default-tag">
       <ui-file-size-tag
         :torrent-link="data.torrent"
