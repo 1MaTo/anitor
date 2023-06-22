@@ -1,17 +1,16 @@
+import { MAL } from '../../../types/my-anime-list'
 import { CACHE_TTL } from '../../../utils/app'
+import { mal } from '../../../utils/my-anime-list'
 
 export default defineEventHandler(async (event) => {
-  /*   const query = getQuery(event) as NyaaQuery */
-
   setResponseHeader(event, 'Cache-Control', `s-maxage=${CACHE_TTL['mal-search']}`)
 
-  const config = useRuntimeConfig()
+  const query = getQuery(event) as MAL.SearchQuery
 
   try {
-    const result = await $fetch(
-      'https://api.myanimelist.net/v2/anime?limit=5&fields=alternative_titles&q=In Spectre 2',
-      { headers: { 'X-MAL-CLIENT-ID': config.malClientId } }
-    )
+    const result = await mal.fetch<MAL.AnimeListResponse>(mal.api.animeList, {
+      query: mal.transformToMALQuery({ ...mal.defaultQuery, ...query })
+    })
     return result.data.map((data) => data.node)
   } catch (error: any) {
     throw createError({
