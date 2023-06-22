@@ -18,7 +18,7 @@ export const cleanNyaaAnimeName = (name: string) => {
       Number(match[1])
 
   //  If name has multiple variants, take only first
-  const matchMultiLang = result2.match(/([^-|│–\/\\]+)/gi)
+  const matchMultiLang = result2.match(/([^-|│–/\\]+)/gi)
   if (matchMultiLang) result2 = matchMultiLang[0]
 
   //  Limit string length to 64 (My Anime List API restriction)

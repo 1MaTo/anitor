@@ -34,7 +34,7 @@ export const useAnimeSuggestions = (name: string) => {
       })
       suggestions.value = result
     } catch (error: any) {
-      console.log(error.message)
+      console.error(error.message)
     }
 
     loading.value = false

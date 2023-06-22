@@ -1,5 +1,5 @@
-import { MAL } from '~/types/my-anime-list'
 import { removeUndefinedFields } from './object'
+import { MAL } from '~/types/my-anime-list'
 
 export const mal = {
   siteUrl: 'https://myanimelist.net',

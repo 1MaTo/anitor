@@ -9,8 +9,8 @@ const clipped = computed(() => animeUtils.cutStringToLimit(props.description, pr
 
 <template>
   <v-menu location="top center" open-on-hover transition="slide-x-transition">
-    <template v-slot:activator="{ props }">
-      <span v-bind="props">{{ clipped }}</span>
+    <template #activator="{ props: menuProps }">
+      <span v-bind="menuProps">{{ clipped }}</span>
     </template>
     <v-card
       v-if="clipped !== description"
@@ -18,7 +18,11 @@ const clipped = computed(() => animeUtils.cutStringToLimit(props.description, pr
       max-width="500"
       class="full-description pa-3"
     >
-      <div class="full-description-paragraph" v-for="text in description.split(/\n/g)">
+      <div
+        v-for="(text, index) in description.split(/\n/g)"
+        :key="index"
+        class="full-description-paragraph"
+      >
         {{ text }}
       </div>
     </v-card>

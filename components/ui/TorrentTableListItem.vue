@@ -86,8 +86,8 @@ const { suggestions, loading } = useAnimeSuggestions(props.data.name)
         </nuxt-link>
       </v-hover>
       <v-menu
-        :activator="`#${menuId}`"
         v-model="animePopper"
+        :activator="`#${menuId}`"
         open-on-hover
         offset="50"
         :close-on-content-click="false"

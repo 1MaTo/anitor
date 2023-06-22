@@ -3,7 +3,7 @@ import { mergeProps } from 'vue'
 import { useTheme } from 'vuetify/lib/framework.mjs'
 import { ThemeType } from '~/types/theme'
 
-const props = withDefaults(defineProps<{ label?: string; tooltip?: string; link?: string }>(), {
+withDefaults(defineProps<{ label?: string; tooltip?: string; link?: string }>(), {
   label: '',
   tooltip: '',
   link: ''
@@ -22,17 +22,17 @@ const showTooltip = ref(false)
   <v-tooltip
     :text="tooltip"
     :model-value="showTooltip"
-    @update:model-value="(value) => (showTooltip = tooltip ? value : false)"
     :content-class="`py-1 px-2 text-medium-emphasis tooltip-content ${$style['tooltip-content']} ${tooltipBgColor}`"
     open-delay="300"
     location="top center"
+    @update:model-value="(value) => (showTooltip = tooltip ? value : false)"
   >
-    <template v-slot:activator="{ props }">
+    <template #activator="{ props: tooltipProps }">
       <v-hover v-slot="{ isHovering, props: hoverProps }">
         <nuxt-link external target="_blank" rel="noopener" :to="link">
           <v-chip
             size="small"
-            v-bind="mergeProps($attrs, props, hoverProps)"
+            v-bind="mergeProps($attrs, tooltipProps, hoverProps)"
             label
             :variant="link && isHovering ? 'tonal' : 'text'"
             class="container px-2 py-0"

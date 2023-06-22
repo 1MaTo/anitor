@@ -1,5 +1,3 @@
-import { i18n } from '~/plugins/setup/i18n'
-
 const strings = {
   test: 'English locale',
   'search-torrents': 'Search torrents',

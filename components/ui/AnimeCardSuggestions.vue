@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { MAL } from '~/types/my-anime-list'
 import { animeUtils } from '~/utils/anime'
-import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{ suggestions: MAL.AnimeSuggestion[] }>()
 
