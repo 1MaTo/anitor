@@ -32,7 +32,7 @@ export const animeUtils = {
     if (stringToCut.length <= limit) return stringToCut
 
     const stringEndIndex = stringToCut.substring(0, 140).lastIndexOf(' ')
-    return stringToCut.substring(0, stringEndIndex) + '...'
+    return stringToCut.substring(0, stringEndIndex)
   },
   getMediaTypeLocaleKey: (type: MAL.MediaType) => {
     switch (type) {
@@ -89,7 +89,7 @@ export const animeUtils = {
         break
     }
 
-    return `anime-rating.${ratingStringKey}`
+    return `anime-age-rating.${ratingStringKey}`
   },
   getStatusLocaleKey: (status: MAL.AiringStatus) => {
     let ratingStringKey = ''
