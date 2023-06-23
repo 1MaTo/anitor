@@ -16,6 +16,10 @@ const strings = {
   episode: 'Episode | Episodes',
   minute: 'Minute | Minutes',
   unknown: 'Unknown',
+  'anime-suggestions-tip':
+    'This results may not be correct!\nTaking first 3 from search in myanimelist.net',
+  'no-anime-found': 'Anime not found',
+  'try-again': 'Try again',
   'read-more': 'More',
   'anime-rating': 'Score',
   'anime-score-count': 'User | Users',
