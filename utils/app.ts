@@ -11,5 +11,5 @@ export const CACHE_TTL = {
 
 export const ITEM_LIMITS = {
   TORRENTS: 50,
-  MAL_SEARCH_LIMIT: 1
+  MAL_SEARCH_LIMIT: 3
 }
