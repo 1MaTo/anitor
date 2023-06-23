@@ -22,5 +22,6 @@ export const mal = {
   getMediaTypeLink: (type: MAL.MediaType) => `${mal.siteUrl}/topanime.php?type=${type}`,
   getSeasonLink: (season: MAL.Season) =>
     `${mal.siteUrl}/anime/season/${season.year}/${season.season}`,
-  getStudioLink: (id: string | number) => `${mal.siteUrl}/anime/producer/${id}`
+  getStudioLink: (id: string | number) => `${mal.siteUrl}/anime/producer/${id}`,
+  getGenreLink: (id: string | number) => `${mal.siteUrl}/anime/genre/${id}`
 }
