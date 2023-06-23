@@ -54,7 +54,6 @@ const completedWidth = computed(() => getTagMaxWidth(props.maxCompletedLength, i
 
 const animePopper = ref(false)
 const menuId = computed(() => 'anime-suggestion-activator-id-' + props.data.id)
-const { suggestions, loading } = useAnimeSuggestions(props.data.name)
 </script>
 
 <template>
@@ -86,17 +85,15 @@ const { suggestions, loading } = useAnimeSuggestions(props.data.name)
         </nuxt-link>
       </v-hover>
       <v-menu
+        eager
         v-model="animePopper"
         :activator="`#${menuId}`"
         offset="50"
         :close-on-content-click="false"
-        location="right center"
-        transition="slide-x-transition"
+        location="end"
+        transition="slide-y-transition"
       >
-        <ui-anime-card-suggestions
-          v-if="!loading && suggestions.length > 0"
-          :suggestions="suggestions"
-        />
+        <ui-anime-card-suggestions :name="data.name" />
       </v-menu>
     </div>
 

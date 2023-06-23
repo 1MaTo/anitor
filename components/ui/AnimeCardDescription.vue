@@ -5,7 +5,6 @@ const props = withDefaults(defineProps<{ description?: string; maxLength?: numbe
 })
 
 const clipped = computed(() => animeUtils.cutStringToLimit(props.description, props.maxLength))
-console.log(clipped, props.description)
 </script>
 
 <template>
