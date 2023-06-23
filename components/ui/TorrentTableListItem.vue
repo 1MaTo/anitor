@@ -65,7 +65,7 @@ const { suggestions, loading } = useAnimeSuggestions(props.data.name)
       <ui-torrent-sub-category-tag :category="(data.sub_category as any)" />
     </div>
 
-    <div class="prop name text-clip">
+    <div :id="menuId" class="prop name text-clip">
       <v-hover v-slot="{ isHovering, props: hoverProps }">
         <nuxt-link
           :id="menuId"
@@ -88,7 +88,6 @@ const { suggestions, loading } = useAnimeSuggestions(props.data.name)
       <v-menu
         v-model="animePopper"
         :activator="`#${menuId}`"
-        open-on-hover
         offset="50"
         :close-on-content-click="false"
         location="right center"

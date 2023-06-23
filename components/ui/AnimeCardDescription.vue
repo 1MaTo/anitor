@@ -1,20 +1,30 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{ description?: string; maxLength?: number }>(), {
   description: '',
-  maxLength: 300
+  maxLength: 250
 })
 
 const clipped = computed(() => animeUtils.cutStringToLimit(props.description, props.maxLength))
+console.log(clipped, props.description)
 </script>
 
 <template>
   <v-menu location="top center" open-on-hover transition="slide-x-transition">
     <template #activator="{ props: menuProps }">
-      <span v-bind="menuProps">{{ clipped }}</span>
+      <span class="text-medium-emphasis">
+        {{ clipped }}
+        <span
+          v-if="clipped !== description"
+          v-bind="menuProps"
+          class="read-more-tip text-grey-darken-1"
+        >
+          ...{{ $t('read-more').toLowerCase() }}
+        </span>
+      </span>
     </template>
     <v-card
       v-if="clipped !== description"
-      color="grey-darken-1"
+      color="grey-darken-3"
       max-width="500"
       class="full-description pa-3"
     >
@@ -36,5 +46,14 @@ const clipped = computed(() => animeUtils.cutStringToLimit(props.description, pr
 
 .full-description-paragraph + .full-description-paragraph {
   margin-top: 8px;
+}
+
+.read-more-tip {
+  cursor: help;
+  font-size: 0.75em;
+}
+
+.read-more-tip:hover {
+  text-decoration: underline;
 }
 </style>

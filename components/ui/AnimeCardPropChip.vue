@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { mergeProps } from 'vue'
-import { useTheme } from 'vuetify/lib/framework.mjs'
-import { ThemeType } from '~/types/theme'
 
 withDefaults(defineProps<{ label?: string; tooltip?: string; link?: string }>(), {
   label: '',
   tooltip: '',
   link: ''
 })
-
-const theme = useTheme()
-
-const tooltipBgColor = computed(() =>
-  theme.global.name.value === ThemeType.dark ? 'bg-grey-darken-3' : 'bg-grey-lighten-3'
-)
 
 const showTooltip = ref(false)
 </script>
@@ -22,7 +14,7 @@ const showTooltip = ref(false)
   <v-tooltip
     :text="tooltip"
     :model-value="showTooltip"
-    :content-class="`py-1 px-2 text-medium-emphasis tooltip-content ${$style['tooltip-content']} ${tooltipBgColor}`"
+    :content-class="`py-1 px-2  tooltip-content ${$style['tooltip-content']} bg-grey-darken-3`"
     open-delay="300"
     location="top center"
     @update:model-value="(value) => (showTooltip = tooltip ? value : false)"
@@ -38,7 +30,7 @@ const showTooltip = ref(false)
             class="container px-2 py-0"
             :class="{ tooltip, link }"
           >
-            <span class="chip-content">
+            <span :class="{ 'chip-content': tooltip || link }">
               {{ label }}
             </span>
           </v-chip>
