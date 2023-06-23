@@ -8,6 +8,9 @@ export const i18n = createI18n<[MessageSchema], AppLocale>({
   legacy: false,
   locale: AppLocale.en,
   fallbackLocale: AppLocale.en,
+  pluralRules: {
+    ru: customRuRluralizationRule
+  },
   messages: {
     en,
     ru
