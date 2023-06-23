@@ -12,8 +12,15 @@ const strings = {
   status: 'Status',
   studio: 'Studio | Studios',
   genre: 'Genre | Genres',
+  format: 'Format',
+  episode: 'Episode | Episodes',
+  minute: 'Minute | Minutes',
+  unknown: 'Unknown',
+  'read-more': 'More',
+  'anime-rating': 'Score',
+  'anime-score-count': 'User | Users',
   'anime-media-type': {
-    unknown: 'unknown',
+    unknown: 'Unknown',
     tv: 'TV Series',
     ova: 'OVA',
     movie: 'Movie',
@@ -46,8 +53,9 @@ const strings = {
     }
   }
 }
+
 const functions = {
-  'anime-rating': {
+  'anime-age-rating': {
     g: ({ named }: { named: (str: string) => boolean }) => (named('long') ? 'All Ages' : 'G'),
     pg: ({ named }: { named: (str: string) => boolean }) => (named('long') ? 'Children' : 'PG'),
     pg_13: ({ named }: { named: (str: string) => boolean }) =>
@@ -57,7 +65,7 @@ const functions = {
     'r+': ({ named }: { named: (str: string) => boolean }) =>
       named('long') ? 'Profanity & Mild Nudity' : 'R+',
     rx: ({ named }: { named: (str: string) => boolean }) => (named('long') ? 'Hentai' : 'Rx')
-  }
+  } as any
 }
 
 export default { ...strings, ...functions }

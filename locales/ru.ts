@@ -1,8 +1,8 @@
 const strings = {
   test: 'Русская локаль',
   'search-torrents': 'Поиск торрентов',
-  leecher: 'Лич | Личи',
-  seeder: 'Сид | Сиды',
+  leecher: 'Лич | Личи | Личи | Личи',
+  seeder: 'Сид | Сиды | Сиды | Сиды',
   'upload-date': 'Дата публикации',
   'torrent-sub-category': 'Подкатегория торрента',
   size: 'Размер',
@@ -10,8 +10,15 @@ const strings = {
   'only-blu-ray': 'BD',
   type: 'Тип',
   status: 'Статус',
-  studio: 'Студия | Студии',
-  genre: 'Жанр | Жанры',
+  studio: 'Студия | Студии | Студии | Студий',
+  genre: 'Жанр | Жанра | Жанра | Жанров',
+  format: 'Формат',
+  episode: 'Серия" | Серии | Серии | Серий',
+  minute: 'Минута | Минуты | Минуты | Минут',
+  unknown: 'Неопределен',
+  'read-more': 'Подробнее',
+  'anime-rating': 'Рейтинг',
+  'anime-score-count': 'Оценок | Оценка | Оценки | Оценок',
   'anime-media-type': {
     unknown: 'Неопределен',
     tv: 'ТВ Сериал',
@@ -48,7 +55,7 @@ const strings = {
 }
 
 const functions = {
-  'anime-rating': {
+  'anime-age-rating': {
     g: ({ named }: { named: (str: string) => boolean }) =>
       named('long') ? 'Нет возрастных ограничений' : 'G',
     pg: ({ named }: { named: (str: string) => boolean }) =>
@@ -60,7 +67,7 @@ const functions = {
     'r+': ({ named }: { named: (str: string) => boolean }) =>
       named('long') ? 'Лицам до 17 лет просмотр запрещен' : 'R+',
     rx: ({ named }: { named: (str: string) => boolean }) => (named('long') ? 'Хентай ' : 'Rx')
-  }
+  } as any
 }
 
 export default { ...strings, ...functions }
