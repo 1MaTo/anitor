@@ -24,11 +24,12 @@ export const useAnimeSuggestions = (name: string) => {
             'start_season',
             'status',
             'studios',
-
             'genres',
             'mean',
             'rating',
-            'end_date'
+            'num_scoring_users',
+            'num_episodes',
+            'average_episode_duration'
           ]
         } as Partial<MAL.SearchQuery>
       })
