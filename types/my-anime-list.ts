@@ -158,9 +158,11 @@ export namespace MAL {
     | 'start_season'
     | 'status'
     | 'studios'
+    | 'rating'
     | 'genres'
     | 'mean'
-    | 'rating'
-    | 'end_date'
+    | 'num_scoring_users'
+    | 'num_episodes'
+    | 'average_episode_duration'
   >
 }
