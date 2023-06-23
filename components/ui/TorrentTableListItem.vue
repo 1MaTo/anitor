@@ -64,7 +64,7 @@ const menuId = computed(() => 'anime-suggestion-activator-id-' + props.data.id)
       <ui-torrent-sub-category-tag :category="(data.sub_category as any)" />
     </div>
 
-    <div :id="menuId" class="prop name text-clip">
+    <div class="prop name text-clip">
       <v-hover v-slot="{ isHovering, props: hoverProps }">
         <nuxt-link
           :id="menuId"
@@ -86,6 +86,7 @@ const menuId = computed(() => 'anime-suggestion-activator-id-' + props.data.id)
       </v-hover>
       <v-menu
         eager
+        open-on-hover
         v-model="animePopper"
         :activator="`#${menuId}`"
         offset="50"
