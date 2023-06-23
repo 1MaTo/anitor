@@ -1,3 +1,4 @@
+import { AnimeCardProps } from '~/types/anime'
 import { MAL } from '~/types/my-anime-list'
 
 const cleanTrashRegexp =
@@ -108,5 +109,24 @@ export const animeUtils = {
     }
 
     return `anime-status.${ratingStringKey}`
+  },
+  formatMALtoAnimeCardProps: (data: MAL.AnimeSuggestion) => {
+    return {
+      id: data.id,
+      image: data.main_picture.medium,
+      title: data.title,
+      description: data.synopsis,
+      startDate: new Date(data.start_date),
+      episodes: data.num_episodes,
+      episodeDuration: Math.round(data.average_episode_duration / 60),
+      mediaType: data.media_type,
+      startSeason: data.start_season,
+      ageRating: data.rating,
+      airingStatus: data.status,
+      studios: data.studios,
+      genres: data.genres,
+      score: data.mean,
+      scoreCount: data.num_scoring_users
+    } as AnimeCardProps
   }
 }
