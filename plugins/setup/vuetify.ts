@@ -1,6 +1,7 @@
 import { createVuetify } from 'vuetify'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import { mdi } from 'vuetify/iconsets/mdi'
+import Shikimori from '~/components/icon/shikimori.vue'
 import { ThemeType } from '~/types/theme'
 
 export const vuetify = createVuetify({
@@ -18,7 +19,7 @@ export const vuetify = createVuetify({
   },
   icons: {
     defaultSet: 'fa',
-    aliases,
+    aliases: { ...aliases, shikimori: Shikimori },
     sets: {
       fa,
       mdi
