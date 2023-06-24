@@ -16,6 +16,7 @@ const strings = {
   episode: 'Episode | Episodes',
   minute: 'Minute | Minutes',
   unknown: 'Unknown',
+  'see-on-shikimori': 'Shikimori',
   'anime-suggestions-tip':
     'This results may not be correct!\nTaking first 3 from search in myanimelist.net',
   'no-anime-found': 'Anime not found',
