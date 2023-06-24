@@ -13,9 +13,10 @@ export default defineEventHandler(async (event) => {
     })
     return result.data.map((data) => data.node)
   } catch (error: any) {
+    const messsage = error.status === 400 ? `MAL query failed for ${query.query}` : error.message
     throw createError({
       statusCode: 400,
-      statusMessage: error.message
+      message: messsage
     })
   }
 })
