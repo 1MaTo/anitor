@@ -1,6 +1,6 @@
+import { useI18n } from 'vue-i18n'
 import { MAL } from '~/types/my-anime-list'
 import { cleanNyaaAnimeName } from '~/utils/anime'
-import { useI18n } from 'vue-i18n'
 
 export const useAnimeSuggestions = (name: string) => {
   const { t } = useI18n()
@@ -43,8 +43,8 @@ export const useAnimeSuggestions = (name: string) => {
       })
       suggestions.value = result
       if (suggestions.value.length === 0) error.value = `${t('no-anime-found')} - [${cleanName}]`
-    } catch (error: any) {
-      error.value = error.message
+    } catch (requestError: any) {
+      error.value = requestError.data.message
     }
 
     loading.value = false
