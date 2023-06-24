@@ -29,10 +29,10 @@ const hideIcon = computed(() => {
 const statusColorClass = computed(() => {
   switch (props.data.status) {
     case TorrentStatus.Danger:
-      return 'text-green'
+      return 'text-error'
 
     case TorrentStatus.Success:
-      return 'text-error'
+      return 'text-success'
 
     default:
       return ''
