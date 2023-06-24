@@ -6,12 +6,14 @@ const props = defineProps<{ name?: string }>()
 const { suggestions, loading, error, refetch } = useAnimeSuggestions(props.name || '')
 
 const currentIndex = ref(0)
+
+const handleRemoveActiveElement = () => (document.activeElement as HTMLElement).blur()
 </script>
 
 <template>
   <v-hover>
     <template #default="{ isHovering, props: hoverProps }">
-      <div v-bind="mergeProps($attrs, hoverProps)">
+      <div v-bind="mergeProps($attrs, hoverProps)" @mouseleave="handleRemoveActiveElement">
         <v-sheet v-if="suggestions.length > 1" border class="paginator pb-2">
           <v-tooltip
             content-class="bg-warning"
