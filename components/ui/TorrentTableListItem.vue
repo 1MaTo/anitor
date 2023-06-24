@@ -85,9 +85,9 @@ const menuId = computed(() => 'anime-suggestion-activator-id-' + props.data.id)
         </nuxt-link>
       </v-hover>
       <v-menu
+        v-model="animePopper"
         eager
         open-on-hover
-        v-model="animePopper"
         :activator="`#${menuId}`"
         offset="50"
         :close-on-content-click="false"

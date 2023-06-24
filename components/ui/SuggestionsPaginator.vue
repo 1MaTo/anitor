@@ -5,12 +5,14 @@ const props = withDefaults(
     itemCount?: number
     withOverflow?: boolean
     listenArrows?: boolean
+    useScroll?: boolean
   }>(),
   {
     modelValue: 0,
     itemCount: 0,
     withOverflow: false,
-    listenArrows: false
+    listenArrows: false,
+    useScroll: false
   }
 )
 
@@ -43,31 +45,38 @@ const onKeyDown = (event: KeyboardEvent) => {
 }
 
 const onScroll = (event: WheelEvent) => {
+  if (!props.useScroll) return
+  event.preventDefault()
   event.deltaY > 0 ? handleNext() : handlePrev()
 }
 
 const onIntersect = (isIntersecting: boolean) => {
+  if (isIntersecting) {
+    document.addEventListener('wheel', onScroll, { passive: false } as any)
+  } else {
+    document.removeEventListener('wheel', onScroll, { passive: false } as any)
+  }
+
   if (!props.listenArrows) return
 
   if (isIntersecting) {
     document.body.addEventListener('keydown', onKeyDown)
-    document.body.addEventListener('wheel', onScroll)
   } else {
     document.body.removeEventListener('keydown', onKeyDown)
-    document.body.removeEventListener('wheel', onScroll)
   }
 }
 </script>
 
 <template>
-  <v-sheet v-intersect="onIntersect" class="d-flex align-center">
+  <div v-intersect="onIntersect" class="d-flex align-center">
     <v-btn
+      tag="div"
       color="grey"
       :disabled="disabledButtons"
-      @click="handlePrev"
       class="button pa-0"
       size="small"
       :variant="(variant as any)"
+      @click="handlePrev"
     >
       <v-icon size="small">fa-solid fa-caret-left</v-icon>
     </v-btn>
@@ -75,16 +84,17 @@ const onIntersect = (isIntersecting: boolean) => {
       `${modelValue + 1} / ${itemCount}`
     }}</span>
     <v-btn
+      tag="div"
       color="grey"
       :disabled="disabledButtons"
-      @click="handleNext"
       class="button pa-0"
       size="small"
       :variant="(variant as any)"
+      @click="handleNext"
     >
       <v-icon size="small">fa-solid fa-caret-right</v-icon>
     </v-btn>
-  </v-sheet>
+  </div>
 </template>
 
 <style scoped>

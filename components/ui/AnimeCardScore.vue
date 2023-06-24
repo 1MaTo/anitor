@@ -15,7 +15,7 @@ const ratingColor = computed(() => {
       {{ $t('anime-rating').toLowerCase() }}
     </span>
     <span class="rating" :class="ratingColor">{{ score || 'N/A' }}</span>
-    <div class="user-count text-disabled" v-if="scoreCount">
+    <div v-if="scoreCount" class="user-count text-disabled">
       {{
         new Intl.NumberFormat('ru', { useGrouping: true }).format(scoreCount) +
         ' ' +

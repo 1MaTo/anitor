@@ -10,6 +10,6 @@ export const CACHE_TTL = {
 }
 
 export const ITEM_LIMITS = {
-  TORRENTS: 50,
+  TORRENTS: process.env.NODE_ENV === 'development' ? 5 : 50,
   MAL_SEARCH_LIMIT: 3
 }

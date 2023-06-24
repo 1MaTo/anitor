@@ -14,9 +14,11 @@ defineEmits<{ (e: 'retry'): void }>()
 </script>
 <template>
   <div class="w-100 h-100 d-inline-flex justify-center align-center">
-    <div v-if="error" class="d-flex justify-center flex-wrap">
-      <div class="text-error text-center w-100 d-flex justify-center">{{ error }}</div>
-      <v-btn size="small" color="error" v-if="retry" class="mt-2" @click="() => $emit('retry')">{{
+    <div v-if="error" class="d-flex justify-center flex-wrap w-100">
+      <div class="text-error text-center w-100 d-flex justify-center flex-wrap">
+        {{ error }}
+      </div>
+      <v-btn v-if="retry" size="small" color="error" class="mt-2" @click="() => $emit('retry')">{{
         retry
       }}</v-btn>
     </div>

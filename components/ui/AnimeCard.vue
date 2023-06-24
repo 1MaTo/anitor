@@ -25,7 +25,7 @@ const formatString = computed(() => {
   <div class="d-flex">
     <div class="h-100">
       <v-img eager transition="fade-transition" width="200" min-height="200" :src="image">
-        <template v-slot:placeholder>
+        <template #placeholder>
           <div class="d-flex align-center justify-center fill-height w-100 h-100">
             <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
           </div>
@@ -39,6 +39,7 @@ const formatString = computed(() => {
             {{ title }}
           </nuxt-link>
         </div>
+
         <div class="prop">
           <ui-anime-card-description :description="description" />
         </div>
@@ -89,6 +90,10 @@ const formatString = computed(() => {
               :label="genre.name"
             />
           </div>
+        </div>
+
+        <div class="mt-4">
+          <ui-shikimori-link :link="shikimori.getAnimeLink(id)" />
         </div>
       </div>
       <div class="prop prop-score justify-end">

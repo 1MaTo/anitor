@@ -4,7 +4,7 @@ withDefaults(defineProps<{ count?: number; withIcon?: boolean }>(), { count: 0, 
 
 <template>
   <v-chip
-    :title="$t('seeder', 2)"
+    :title="$t('seeder')"
     size="small"
     label
     :prepend-icon="withIcon ? 'mdi:mdi-account-arrow-up' : undefined"
