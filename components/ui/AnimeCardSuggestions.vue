@@ -4,7 +4,7 @@ import { useAnimeSuggestions } from '~/composables/useAnimeSuggestion'
 import { animeUtils } from '~/utils/anime'
 const props = defineProps<{ name?: string }>()
 
-const { suggestions, loading, error, refetch } = useAnimeSuggestions(props.name || '')
+const { suggestions, loading, error, cleanName, refetch } = useAnimeSuggestions(props.name || '')
 
 const currentIndex = ref(0)
 
@@ -49,6 +49,9 @@ const handleRemoveActiveElement = () => (document.activeElement as HTMLElement).
               </v-window>
             </div>
           </v-fade-transition>
+          <div class="debug-helper pa-2">
+            <ui-anime-card-debug-info :search-name="cleanName" color="grey-darken-2" />
+          </div>
         </v-card>
       </div>
     </template>
@@ -56,6 +59,12 @@ const handleRemoveActiveElement = () => (document.activeElement as HTMLElement).
 </template>
 
 <style scoped>
+.debug-helper {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .placeholder {
   font-size: 0.75em;
   min-width: 300px;

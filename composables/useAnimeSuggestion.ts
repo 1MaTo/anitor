@@ -4,6 +4,7 @@ import { MAL } from '~/types/my-anime-list'
 export const useAnimeSuggestions = (name: string) => {
   const { t } = useI18n()
   const loading = ref(false)
+  const cleanName = ref(name)
   const suggestions = ref<MAL.AnimeSuggestion[]>([])
   const error = ref('')
 
@@ -14,11 +15,12 @@ export const useAnimeSuggestions = (name: string) => {
   const findSuggestions = async (animeName: string) => {
     loading.value = true
     error.value = ''
-    const cleanName = animeUtils.cleanTorrentName(animeName) || animeName
+    const newCleanName = animeUtils.cleanTorrentName(animeName) || animeName
+    cleanName.value = newCleanName
     try {
       const result = await $fetch<MAL.AnimeSuggestion[]>('/api/mal/search', {
         query: {
-          query: cleanName,
+          query: newCleanName,
           limit: ITEM_LIMITS.MAL_SEARCH_LIMIT,
           fields: [
             'id',
@@ -41,7 +43,7 @@ export const useAnimeSuggestions = (name: string) => {
         } as Partial<MAL.SearchQuery>
       })
       suggestions.value = result
-      if (suggestions.value.length === 0) error.value = `${t('no-anime-found')} - [${cleanName}]`
+      if (suggestions.value.length === 0) error.value = `${t('no-anime-found')} - [${newCleanName}]`
     } catch (requestError: any) {
       error.value = requestError.data.message
     }
@@ -62,5 +64,5 @@ export const useAnimeSuggestions = (name: string) => {
     findSuggestions(name)
   })
 
-  return { suggestions, loading, error, refetch }
+  return { suggestions, loading, error, cleanName, refetch }
 }
