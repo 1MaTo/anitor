@@ -34,7 +34,7 @@ const copySearhName = () => {
         <div class="subtitle mt-5">
           {{ $t('anime-suggestions-info.search-name-title') }}
         </div>
-        <v-card class="mt-2 pa-1 d-flex align-center" rounded color="blue-darken-2" preve>
+        <v-card class="mt-2 pa-1 d-flex align-center" variant="outlined" rounded color="blue" preve>
           <v-snackbar :timeout="1000" color="success" variant="tonal">
             <template v-slot:activator="{ props: snackbarProps }">
               <v-btn
