@@ -1,6 +1,5 @@
 import { useI18n } from 'vue-i18n'
 import { MAL } from '~/types/my-anime-list'
-import { cleanNyaaAnimeName } from '~/utils/anime'
 
 export const useAnimeSuggestions = (name: string) => {
   const { t } = useI18n()
@@ -15,7 +14,7 @@ export const useAnimeSuggestions = (name: string) => {
   const findSuggestions = async (animeName: string) => {
     loading.value = true
     error.value = ''
-    const cleanName = cleanNyaaAnimeName(animeName) || animeName
+    const cleanName = animeUtils.cleanTorrentName(animeName) || animeName
     try {
       const result = await $fetch<MAL.AnimeSuggestion[]>('/api/mal/search', {
         query: {
