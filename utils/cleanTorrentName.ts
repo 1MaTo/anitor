@@ -9,6 +9,8 @@ const allSeasonRegExp = /season.?(\d+)|s(\d+)(n\d+?)?\b/gi
 
 const squareBraketsRegExp = /\[(.*?)\]/gi
 
+const numbersInTheEndRegExp = / \d+$/gi
+
 const sortByLengthDesc = (a: string, b: string) => b.length - a.length
 const longestWithLimit = (limit: number) => (item: string) => item.length <= limit
 
@@ -61,6 +63,8 @@ export const cleanTorrentNameForAnime = (name: string, nameLengthLimit: number =
   if (result.length > nameLengthLimit) {
     result = getOneOfNamesWithLimit(result, nameLengthLimit) || result
   }
+
+  result = result.replace(numbersInTheEndRegExp, '')
 
   if (season) result = `${result} ${season}`
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { AnimeCardProps } from '~/types/anime'
+import { animeUtils } from '~/utils/anime'
 
 const props = defineProps<AnimeCardProps>()
 

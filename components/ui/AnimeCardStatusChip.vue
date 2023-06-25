@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { MAL } from '~/types/my-anime-list'
+import { animeUtils } from '~/utils/anime'
 
 const props = defineProps<{ status: MAL.AiringStatus }>()
 

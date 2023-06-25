@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { mergeProps } from 'vue'
 import { useAnimeSuggestions } from '~/composables/useAnimeSuggestion'
+import { animeUtils } from '~/utils/anime'
 const props = defineProps<{ name?: string }>()
 
 const { suggestions, loading, error, refetch } = useAnimeSuggestions(props.name || '')
