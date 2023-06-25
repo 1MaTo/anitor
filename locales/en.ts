@@ -16,6 +16,15 @@ const strings = {
   episode: 'Episode | Episodes',
   minute: 'Minute | Minutes',
   unknown: 'Unknown',
+  'anime-suggestions-info': {
+    title: 'How this suggestions work',
+    steps:
+      '1. Clean torrent name from useless words\n2. Using MAL api search for anime (max 3 titles)\n3. Load results in this cards',
+    warning:
+      'Keep in mind that this results may not be valid in case of very specific torrent name',
+    'search-name-title': 'Below is the cleaned name that was used for the search'
+  },
+  'copied-to-clipboard': 'Copied to clipboard',
   'see-on-shikimori': 'Shikimori',
   'anime-suggestions-tip':
     'This results may not be correct!\nTaking first 3 from search in myanimelist.net',
