@@ -1,8 +1,7 @@
-export const APP_NAME = 'BD checker'
-export const APP_DESCRIPTION =
-  'Search for torrents with additional info about titles from shikimori.one'
-
-export const REDIS_UPSTASH = 'redis_upstash'
+export const APP_NAME = 'Anitor'
+export const APP_DESCRIPTION = 'Search for torrents with additional info about titles'
+export const APP_DEPLOYMENT_ORIGIN = 'https://anitor.vercel.app'
+export const APP_GITHUB = 'https://github.com/1MaTo/anitor'
 
 export const CACHE_TTL = {
   'nyaa-search': 60, //  1m

@@ -1,19 +1,21 @@
 import vuetify from 'vite-plugin-vuetify'
 import { AppLocale } from './types/locale'
-import { APP_DESCRIPTION, APP_NAME } from './utils/app'
+import { APP_DEPLOYMENT_ORIGIN, APP_DESCRIPTION, APP_NAME } from './utils/app'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@pinia/nuxt'],
-  /* nitro: {
-    storage: {
-      [REDIS_UPSTASH]: {
-        driver: 'redis',
-        url: process.env.REDIS_CONNECTION_STRING,
-        token: process.env.REDIS_REST_TOKEN
+  routeRules: {
+    // Add cors headers on API routes
+    '/api/**': {
+      cors: true,
+      headers: {
+        'Access-Control-Allow-Origin':
+          process.env.NODE_ENV === 'production' ? APP_DEPLOYMENT_ORIGIN : '*'
       }
     }
-  }, */
+  },
+  plugins: [{ src: '~/plugins/03.vercel.ts', mode: 'client' }],
+  modules: ['@pinia/nuxt'],
   runtimeConfig: {
     malClientId: process.env.MAL_CLIENT_ID
   },
@@ -21,6 +23,10 @@ export default defineNuxtConfig({
     head: {
       title: APP_NAME,
       htmlAttrs: { lang: AppLocale.en },
+      link: [
+        { rel: 'icon', href: '/favicon.ico' }, // <-- this and,
+        { rel: 'canonical', href: APP_DEPLOYMENT_ORIGIN } // <-- this. Please reverse the order to be sure.
+      ],
       meta: [
         {
           name: 'description',
@@ -32,7 +38,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'og:image',
-          content: '/nyaa-logo.png'
+          content: '/logo.png'
         },
         {
           name: 'twitter:card',
