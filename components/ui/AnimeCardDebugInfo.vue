@@ -10,7 +10,7 @@ const copySearhName = () => {
 <template>
   <div class="d-flex">
     <v-menu open-on-hover :close-on-content-click="false" location="start top">
-      <template v-slot:activator="{ props: menuProps }">
+      <template #activator="{ props: menuProps }">
         <v-icon size="small" class="icon" v-bind="mergeProps(menuProps, $attrs)">
           mdi:mdi-cog
         </v-icon>
@@ -21,9 +21,9 @@ const copySearhName = () => {
         </div>
         <div class="mt-2">
           <div
-            class="step"
             v-for="step in $t('anime-suggestions-info.steps').split('\n')"
             :key="step"
+            class="step"
           >
             {{ step }}
           </div>
@@ -36,14 +36,14 @@ const copySearhName = () => {
         </div>
         <v-card class="mt-2 pa-1 d-flex align-center" variant="outlined" rounded color="blue" preve>
           <v-snackbar :timeout="1000" color="success" variant="tonal">
-            <template v-slot:activator="{ props: snackbarProps }">
+            <template #activator="{ props: snackbarProps }">
               <v-btn
                 density="comfortable"
                 v-bind="snackbarProps"
-                @click="copySearhName"
                 class="mr-2"
                 icon="mdi:mdi-content-copy"
                 variant="text"
+                @click="copySearhName"
               />
             </template>
             {{ $t('copied-to-clipboard') }}

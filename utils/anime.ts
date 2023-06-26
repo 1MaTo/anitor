@@ -1,6 +1,6 @@
+import { cleanTorrentNameForAnime } from './cleanTorrentName'
 import { AnimeCardProps } from '~/types/anime'
 import { MAL } from '~/types/my-anime-list'
-import { cleanTorrentNameForAnime } from './cleanTorrentName'
 
 export const animeUtils = {
   cleanTorrentName: cleanTorrentNameForAnime,
