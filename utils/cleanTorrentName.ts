@@ -8,7 +8,7 @@ const seasonRegExp = /season.?(\d+)|s(\d+)([ne]\d+?)?\b/i
 const allSeasonRegExp = /season.?(\d+)|s(\d+)([ne]\d+?)?\b/gi
 
 const squareBraketsRegExp = /\[(.*?)\]/gi
-const nonWordEndOfLineRegExp = /[^\w\d]+$/gi
+const nonWordEndOfLineRegExp = /[^a-zA-Z]+$/gi
 
 const sortByLengthDesc = (a: string, b: string) => b.length - a.length
 const longestWithLimit = (limit: number) => (item: string) => item.length <= limit
@@ -43,10 +43,10 @@ const getOneInBraketLongest = (name: string) => {
 
   if (!matchedName) return name
 
-  return matchedName.replace(/[\[\]]/gi, '') || name
+  return matchedName.replace(/[[\]]/gi, '') || name
 }
 
-export const cleanTorrentNameForAnime = (name: string, nameLengthLimit: number = 64) => {
+export const cleanTorrentNameForAnime = (name: string, nameLengthLimit = 64) => {
   const { name: nameWithoutSeason, season } = extractSeason(name)
   const removedTorrentProps = nameWithoutSeason
     .replace(braketsRegExp, ' ')
