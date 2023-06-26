@@ -37,12 +37,32 @@ export default defineNuxtConfig({
           content: APP_NAME
         },
         {
+          name: 'og:description',
+          content: APP_DESCRIPTION
+        },
+        {
+          name: 'og:url',
+          content: APP_DEPLOYMENT_ORIGIN
+        },
+        {
           name: 'og:image',
-          content: '/logo.png'
+          content: '/og_image.svg'
         },
         {
           name: 'twitter:card',
-          content: 'app'
+          content: 'summary'
+        },
+        {
+          name: 'twitter:title',
+          content: APP_NAME
+        },
+        {
+          name: 'twitter:description',
+          content: APP_DESCRIPTION
+        },
+        {
+          name: 'twitter:image',
+          content: '/og_image.svg'
         }
       ]
     }
