@@ -87,8 +87,9 @@ const formatString = computed(() => {
             <ui-anime-card-prop-chip
               v-for="genre in genres"
               :key="genre.id"
+              :tooltip="$t(`anime-genre.description.${genre.name.toLowerCase()}`)"
               :link="mal.getGenreLink(genre.id)"
-              :label="genre.name"
+              :label="$t(`anime-genre.name.${genre.name.toLowerCase()}`)"
             />
           </div>
         </div>

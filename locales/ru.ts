@@ -1,3 +1,5 @@
+import { genres } from './genres.ru'
+
 const strings = {
   test: 'Русская локаль',
   'search-torrents': 'Поиск торрентов',
@@ -65,7 +67,8 @@ const strings = {
       success: 'Проверенный',
       danger: 'Ремейк'
     }
-  }
+  },
+  'anime-genre': genres
 }
 
 const functions = {

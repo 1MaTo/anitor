@@ -1,17 +1,27 @@
 <script setup lang="ts">
-import logoImage from '@/assets/bd_logo.png'
 import { APP_NAME } from '@/utils/app'
 </script>
 
 <template>
   <div class="d-flex container">
-    <v-img class="mr-3" width="60" aspect-ratio="1/1" :src="logoImage"></v-img>
-    <div class="text-h5">{{ APP_NAME }}</div>
+    <div class="text-h5">
+      <span class="text text-primary">
+        {{ APP_NAME.substring(0, 1) }}
+      </span>
+      <span class="text">
+        {{ APP_NAME.substring(1) }}
+      </span>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .container {
   cursor: default;
+}
+
+.text {
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 </style>

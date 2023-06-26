@@ -1,3 +1,5 @@
+import { genres } from './genres.en'
+
 const strings = {
   test: 'English locale',
   'search-torrents': 'Search torrents',
@@ -65,7 +67,8 @@ const strings = {
       success: 'Trusted',
       danger: 'Remake'
     }
-  }
+  },
+  'anime-genre': genres
 }
 
 const functions = {

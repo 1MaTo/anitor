@@ -12,6 +12,7 @@ const showTooltip = ref(false)
 
 <template>
   <v-tooltip
+    max-width="300"
     :text="tooltip"
     :model-value="showTooltip"
     :content-class="`py-1 px-2  tooltip-content ${$style['tooltip-content']} bg-grey-darken-3`"

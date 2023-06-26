@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <v-fade-transition>
       <v-container v-show="show">
         <v-row>
@@ -34,3 +34,9 @@ onMounted(() => {
     </v-fade-transition>
   </div>
 </template>
+
+<style scoped>
+.container {
+  min-width: 600px;
+}
+</style>

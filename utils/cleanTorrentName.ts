@@ -1,15 +1,14 @@
 const braketsRegExp = /\[.*?\]|\(.*?\)|【.*?】|★.*?★|{.*?}/gi
 const torrentPropsRegExp =
-  /[「」]| ?\+ ?([A-Za-z]\w+)+|(vol.?|ep.?)?\d{1,}-\d{1,}|\.[a-zA-Z]\w+$|\bbd(.?(remux|rip|mv|box))?\b|\bblu.?ray\b|batch|extras|x265|10.?bit|(vf.?)?VOSTFR|tokuten|dvd|hevc|mkv|avc|disc box|hdr|flac|complete.series(.?\d\.\d)?|raws?|\d{3,4}p|cd.?box|project complete|season collection|dts-hd|简体内嵌|DBD制作组&极影字幕社|_|\bvol.?\d+\b|\b(sp|tv|dvo|ukr|pcm|subs?)\b|アニメ/gi
+  /[^\w\d]+$|[「」]| ?\+ ?([A-Za-z]\w+)+|(vol.?|ep.?)?\d{1,}-\d{1,}|\.[a-zA-Z]\w+$|\bbd(.?(remux|rip|mv|box))?\b|\bblu.?ray\b|batch|extras|x265|10.?bit|(vf.?)?VOSTFR|tokuten|dvd|hevc|mkv|avc|disc box|hdr|flac|complete.series(.?\d\.\d)?|raws?|\d{3,4}p|cd.?box|project complete|season collection|dts-hd|简体内嵌|DBD制作组&极影字幕社|[_ー]|TrueHD(.?\d(\.\d)?)?|\bvol.?\d+\b|\b(sp|tv|dvo|ukr|pcm|vf|av1|complete|gbr|all|subs?)\b|アニメ/gi
 
 const dividerRegExp = / [\\|/／] /gi
 
-const seasonRegExp = /season.?(\d+)|s(\d+)(n\d+?)?\b/i
-const allSeasonRegExp = /season.?(\d+)|s(\d+)(n\d+?)?\b/gi
+const seasonRegExp = /season.?(\d+)|s(\d+)([ne]\d+?)?\b/i
+const allSeasonRegExp = /season.?(\d+)|s(\d+)([ne]\d+?)?\b/gi
 
 const squareBraketsRegExp = /\[(.*?)\]/gi
-
-const numbersInTheEndRegExp = / \d+$/gi
+const nonWordEndOfLineRegExp = /[^\w\d]+$/gi
 
 const sortByLengthDesc = (a: string, b: string) => b.length - a.length
 const longestWithLimit = (limit: number) => (item: string) => item.length <= limit
@@ -64,7 +63,7 @@ export const cleanTorrentNameForAnime = (name: string, nameLengthLimit: number =
     result = getOneOfNamesWithLimit(result, nameLengthLimit) || result
   }
 
-  result = result.replace(numbersInTheEndRegExp, '')
+  result = result.replace(nonWordEndOfLineRegExp, '')
 
   if (season) result = `${result} ${season}`
 
