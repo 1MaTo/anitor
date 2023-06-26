@@ -32,6 +32,10 @@ const hasTorrents = computed(() => store.torrents.length > 0)
       :max-leechers-length="sizes.leechers"
       :max-seeders-length="sizes.seeders"
       :data="item"
-    />
+    >
+      <template #popup="{ anime }">
+        <anime-card-suggestions :name="anime.name" />
+      </template>
+    </ui-torrent-table-list-item>
   </v-fade-transition>
 </template>

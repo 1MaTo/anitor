@@ -94,7 +94,7 @@ const menuId = computed(() => 'anime-suggestion-activator-id-' + props.data.id)
         location="end"
         transition="slide-y-transition"
       >
-        <ui-anime-card-suggestions :name="data.name" />
+        <slot name="popup" :anime="data"> </slot>
       </v-menu>
     </div>
 
