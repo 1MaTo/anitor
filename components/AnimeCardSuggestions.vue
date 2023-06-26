@@ -34,7 +34,7 @@ const handleRemoveActiveElement = () => (document.activeElement as HTMLElement).
             </template>
           </v-tooltip>
         </v-sheet>
-        <v-card border class="card d-flex cursor-default pa-2" max-width="600">
+        <v-card border class="card d-flex cursor-default pa-2" max-width="700">
           <v-fade-transition leave-absolute>
             <div v-if="loading || error" class="placeholder">
               <ui-anime-card-loader :retry="$t('try-again')" :error="error" @retry="refetch" />

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{ description?: string; maxLength?: number }>(), {
   description: '',
-  maxLength: 250
+  maxLength: 100
 })
 
 const clipped = computed(() => animeUtils.cutStringToLimit(props.description, props.maxLength))

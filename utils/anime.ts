@@ -7,7 +7,7 @@ export const animeUtils = {
   cutStringToLimit: (stringToCut: string, limit = 140) => {
     if (stringToCut.length <= limit) return stringToCut
 
-    const stringEndIndex = stringToCut.substring(0, 140).lastIndexOf(' ')
+    const stringEndIndex = stringToCut.substring(0, limit).lastIndexOf(' ')
     return stringToCut.substring(0, stringEndIndex)
   },
   getMediaTypeLocaleKey: (type: MAL.MediaType) => {

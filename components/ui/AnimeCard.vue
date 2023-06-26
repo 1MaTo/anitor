@@ -25,7 +25,7 @@ const formatString = computed(() => {
 <template>
   <div class="d-flex">
     <div class="h-100">
-      <v-img eager transition="fade-transition" width="200" min-height="200" :src="image">
+      <v-img eager transition="fade-transition" width="225" min-height="200" :src="image">
         <template #placeholder>
           <div class="d-flex align-center justify-center fill-height w-100 h-100">
             <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
