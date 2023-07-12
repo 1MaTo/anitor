@@ -2,7 +2,7 @@ const braketsRegExp = /\[.*?\]|\(.*?\)|【.*?】|★.*?★|{.*?}/gi
 const torrentPropsRegExp =
   /[^\w\d一-龠ぁ-ゔァ-ヴーａ-ｚＡ-Ｚ０-９々〆〤ヶ]+$|[「」]| ?\+ ?([A-Za-z]\w+)+|(vol.?|ep.?)?\d{1,}-\d{1,}|\.[a-zA-Z]\w+$|\bbd(.?(remux|rip|mv|box))?\b|\bblu.?ray\b|batch|extras|x265|10.?bit|(vf.?)?VOSTFR|tokuten|dvd|hevc|mkv|avc|disc box|hdr|flac|complete.series(.?\d\.\d)?|raws?|\d{3,4}p|cd.?box|project complete|season collection|dts-hd|简体内嵌|DBD制作组&极影字幕社|[_ー]|TrueHD(.?\d(\.\d)?)?|\bvol.?\d+\b|\b(sp|tv|dvo|ukr|pcm|vf|av1|complete|gbr|all|subs?)\b|アニメ/gi
 
-const dividerRegExp = / [\\|/／] /gi
+const dividerRegExp = / *[\\|/／] */gi
 
 const seasonRegExp = /season.?(\d+)|s(\d+)([ne]\d+?)?\b/i
 const allSeasonRegExp = /season.?(\d+)|s(\d+)([ne]\d+?)?\b/gi
